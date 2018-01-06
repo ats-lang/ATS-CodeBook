@@ -7,5 +7,5 @@ it and then execute it.
   
 ## ReadFromSTDIN
 
-This example demonstrates a stream-based approach to handling input
-from the user.
+This example demonstrates a stream-based approach to constructing an
+interactive program that handles input from the user.
