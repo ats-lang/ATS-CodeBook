@@ -40,8 +40,17 @@ main0() = println! ("Hello", ", world!")
 
 Note that the body of ```main0``` is required to be of the type
 ```void```. The function-like ```println!``` prints its arguments to
-the standard output and then prints a new line at the end. I use the
+the standard output and then prints a newline at the end. I use the
 name function-like to refer to something in ATS that is like a
 function but is not actually a function.
+
+There is a Makefile provide for compiling the code. One can also use
+the following *myatscc* command-line for compilation:
+
+```shell
+myatscc hello.dats
+```
+
+which should generate an executable of the name *hello_dats*.
 
 Happy coding!!!
