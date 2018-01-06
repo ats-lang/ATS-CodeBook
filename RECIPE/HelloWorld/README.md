@@ -55,9 +55,9 @@ myatscc hello.dats
 which should generate an executable of the name *hello_dats*. By executing
 *hello_dats*, one sees the expected output:
 
-```shell
+```text
 >> ./hello_dats
 << Hello, world!
 ```
 
-Happy coding!!!
+Happy coding in ATS!!!
