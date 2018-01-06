@@ -52,6 +52,12 @@ the following *myatscc* command-line for compilation:
 myatscc hello.dats
 ```
 
-which should generate an executable of the name *hello_dats*.
+which should generate an executable of the name *hello_dats*. By executing
+*hello_dats*, one sees the expected output:
+
+```shell
+>> ./hello_dats
+<< Hello, world!
+```
 
 Happy coding!!!
