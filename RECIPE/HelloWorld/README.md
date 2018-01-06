@@ -29,14 +29,19 @@ in the construction of ATS programs:
 #include "share/atspre_staload_libats_ML.hats"
 ```
 
-In order to compile a program into an executable, the special function named main
-need to be implemented. In the following code, main0 is a variant of main:
+In order to compile a program into an executable, the special function
+named ```main``` need to be implemented. In the following code,
+```main0``` is a variant of ```main```:
 
 ```ats
 implement
 main0() = println! ("Hello", ", world!")
 ```
 
-Note that the body of main0 is required to be of the type void. The function-like
-println! prints its arguments to the standard output and then prints a new line at the end.
+Note that the body of ```main0``` is required to be of the type
+```void```. The function-like ```println!``` prints its arguments to
+the standard output and then prints a new line at the end. I use the
+name function-like to refer to something in ATS that is like a
+function but is not actually a function.
 
+Happy coding!!!
