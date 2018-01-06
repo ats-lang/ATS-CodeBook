@@ -9,7 +9,7 @@ on your own machine. For instance, you can find various
 scripts [on-line](http://www.ats-lang.org/Downloads.html#Scripts_for_installing_ATS_Postiats)
 for installing ATS on Linux and MacOS.
 
-Let us go through the few lines of code in [hello.dats](./hello.dats) quickly.
+Let us go through the few lines of code in [Hello.dats](./Hello.dats) quickly.
 One can form a line-comment in ATS by starting the line with two slashes (//). One can also
 form a block-comment in ATS by using the ML-style of commenting:
 
@@ -49,15 +49,15 @@ There is a Makefile provide for compiling the code. One can also use
 the following *myatscc* command-line for compilation:
 
 ```shell
-myatscc hello.dats
+myatscc Hello.dats
 ```
 
-which should generate an executable of the name *hello_dats*. By executing
-*hello_dats*, one sees the expected output:
+which should generate an executable of the name *Hello_dats*. By executing
+*Hello_dats*, one sees the expected output:
 
 ```text
->> ./hello_dats
+>> ./Hello_dats
 << Hello, world!
 ```
 
-Happy coding in ATS!!!
+Happy programming in ATS!!!

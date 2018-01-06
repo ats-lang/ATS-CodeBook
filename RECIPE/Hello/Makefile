@@ -15,7 +15,7 @@ PATSLIB=$(PATSHOME)/ccomp/atslib
 
 ######
 
-all:: hello_dats
+all:: Hello_dats
 
 ######
 
@@ -29,7 +29,7 @@ testall:: cleanall
 
 ######
 
-regress:: hello_dats; ./$<
+regress:: Hello_dats; ./$<
 
 ######
 
@@ -38,6 +38,6 @@ clean:: ; rm -f *_?ats.o
 clean:: ; rm -f *_?ats.c
 
 cleanall:: clean
-cleanall:: ; rm -f hello_dats
+cleanall:: ; rm -f Hello_dats
 
 ###### end of [Makefile] ######

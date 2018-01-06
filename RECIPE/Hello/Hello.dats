@@ -10,4 +10,4 @@ main0() = println! ("Hello, world!")
 
 (* ****** ****** *)
 
-(* end of [hello.dats] *)
+(* end of [Hello.dats] *)
