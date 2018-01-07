@@ -35,6 +35,11 @@ tally(): int = let
         val () =
         if isneqz(x) then prompt()
       in
+//
+// HX-2018-01-06:
+// [g0string2int] converts a given string into
+// the int it represents
+//
         loop(xs, res+g0string2int(x))
       end
   ) (* end of [loop] *)

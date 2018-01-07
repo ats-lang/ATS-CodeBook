@@ -59,9 +59,12 @@ in
   loop(streamize_fileref_line(stdin_ref), 0)
 end // end of [tally]
 ```
+Note that the function ```isneqz``` checks whether a
+given string is empty and the function ```g0string2int```
+converts a given string into the int-value it represents.
 
-As far as I can tell, linear streams are so far a unique programming
-feature that is only available in ATS. I will gradually present more
-examples involving linear streams.
+As far as I can tell, linear streams are so far a programming feature
+that is only available in ATS. I will gradually present more examples
+involving linear streams.
   
 Happy programming in ATS!!!
