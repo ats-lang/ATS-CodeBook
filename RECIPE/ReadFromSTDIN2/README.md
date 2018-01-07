@@ -23,7 +23,7 @@ stream_vt_map_cloptr<int><int>
   (println!("Please input an integer or type Ctrl-D:"); i)
 ) where
 {
-  val xs = intGte_stream_vt(0)
+  val xs = intGte_stream_vt(0) // HX: generating 0, 1, 2, 3, ...
 }
 ```
 
@@ -42,11 +42,17 @@ tally() = let
   streamize_fileref_line(stdin_ref)
   val xs =
   (xs).filter()(lam(x) => isneqz(x))
-  val xs =
+  val ys =
   stream_vt_map2_cloptr<int,string><int>(ps, xs, lam(p, x) => g0string2int(x))
 in
-  stream_vt_foldleft_cloptr<int><int>(xs, 0, lam(r, x) => r + x)
+  stream_vt_foldleft_cloptr<int><int>(ys, 0, lam(r, y) => r + y)
 end // end of [tally]
 ```
+
+The code is self-explanatory: ```ps``` refers to a stream for producing prompts
+and ```xs``` to a stream of strings representing non-empty lines read from STDIN;
+calling ```map2``` on ```ps``` and ```xs``` (with some closure-function)
+builds a stream ```ys``` of integers where each integer is converted from a string in ```xs```;
+calling ```foldleft``` on ```ys``` returns the sum of all of the integers contained in ```ys```.
 
 Happy programming in ATS!!!
