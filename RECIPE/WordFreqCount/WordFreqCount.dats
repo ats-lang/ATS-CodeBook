@@ -10,6 +10,33 @@ typedef nword = (int, string)
 
 (* ****** ****** *)
 
+extern
+fun
+print_free_nwordlst
+( N: int
+, nws: List_vt(nword)): void
+
+implement
+print_free_nwordlst(N, nws) =
+  if
+  N <= 0
+  then
+  (
+    list_vt_free<nword>(nws)
+  )
+  else
+  (
+    case+ nws of
+    | ~list_vt_nil() => ()
+    | ~list_vt_cons(nw, nws) =>
+      (
+        println!(nw.1, " -> ", nw.0);
+        print_free_nwordlst(N-1, nws)
+      )
+  )
+
+(* ****** ****** *)
+
 local
 
 #include
@@ -42,8 +69,6 @@ extern
 fun
 list_vt_word2nword
 (ws: List_vt(word)): List0_vt(nword)
-
-(* ****** ****** *)
 
 implement
 list_vt_word2nword
@@ -86,16 +111,14 @@ end // end of [list_vt_word2nword]
 
 (* ****** ****** *)
 
+#define L(c) tolower(c)
+
+(* ****** ****** *)
+
 extern
 fun
 stream_vt_char2word
 (cs: stream_vt(char)): stream_vt(word)
-
-(* ****** ****** *)
-
-#define L(c) tolower(c)
-
-(* ****** ****** *)
 
 implement
 stream_vt_char2word
@@ -156,27 +179,6 @@ stream_vt_char2nword(cs) = nws where
   val nws = list_vt_word2nword(ws)
   val nws = list_vt_mergesort_fun<nword>(nws, lam(nw1, nw2) => ~compare(nw1.0, nw2.0))
 }
-
-(* ****** ****** *)
-
-extern
-fun
-print_free_nwordlst
-  (N: int, nws: List_vt(nword)): void
-implement
-print_free_nwordlst(N, nws) =
-  if N <= 0
-  then list_vt_free(nws)
-  else
-  (
-    case+ nws of
-    | ~list_vt_nil() => ()
-    | ~list_vt_cons(nw, nws) =>
-      (
-        println!(nw.1, " -> ", nw.0);
-        print_free_nwordlst(N-1, nws)
-      )
-  )
 
 (* ****** ****** *)
 //
