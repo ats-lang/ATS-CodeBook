@@ -107,11 +107,12 @@ stream_vt_char2word
     | ~stream_vt_nil() =>
        stream_vt_make_nil()
     | ~stream_vt_cons(c0, cs) =>
+      (
        if isalpha(c0)
          then $ldelay
               (auxmain_con(cs, list_vt_sing(L(c0))), ~(cs))
          else auxmain(cs)
-       // end of [if]
+      )
   )
   
   and
@@ -124,10 +125,11 @@ stream_vt_char2word
     | ~stream_vt_nil() =>
        stream_vt_sing(string_make_rlist_vt(w0))
     | ~stream_vt_cons(c1, cs) =>
+      (
        if isalpha(c1)
          then auxmain_con(cs, list_vt_cons(L(c1), w0))
          else stream_vt_cons(string_make_rlist_vt(w0), auxmain(cs))
-       // end of [if]
+      )
   )
 } (* end of [stream_vt_char2word] *)
 

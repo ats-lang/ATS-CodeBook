@@ -19,3 +19,7 @@ is written is a different style, which greatly stresses the use of
 combinators in functional programming.
 
 ## [WordFreqCount](./WordFreqCount)
+
+This example gives a stream-based implementation that counts words in
+a given on-line source and then sort these words according to they
+frequencies.
