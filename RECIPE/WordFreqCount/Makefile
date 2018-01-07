@@ -48,7 +48,7 @@ cleanall:: ; rm -f WordFreqCount_dats
 
 ######
 
-npm_update:: ; $(NPM) update
-npm_install:: ; $(NPM) install
+npm-update:: ; $(NPM) update
+npm-install:: ; $(NPM) install
 
 ###### end of [Makefile] ######

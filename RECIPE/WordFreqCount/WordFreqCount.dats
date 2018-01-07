@@ -15,6 +15,9 @@ local
 #include
 "$PATSHOMELOCS\
 /atscntrb-hx-teaching-bucs/mylibies.hats"
+#include
+"$PATSHOMELOCS\
+/atscntrb-hx-teaching-bucs/mylibies_link.hats"
 
 #staload
 $BUCS520_2016_FALL // opening it
@@ -27,7 +30,9 @@ stream_by_url_
 (url: string): stream_vt(char)
 
 implement
-stream_by_url_(url) = stream_by_url<>(url)
+stream_by_url_(url) =
+stream_by_command<>
+("wget", $list{string}("-q", "-O", "-", url))
 
 end // end of [local]
 
