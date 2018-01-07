@@ -5,6 +5,23 @@
 
 (* ****** ****** *)
 
+(*
+fun
+echo() = let
+  fun
+  loop(xs: stream_vt(string)): void =
+  (
+    case+ !xs of
+    | ~stream_vt_nil() => ()
+    | ~stream_vt_cons(x, xs) => (println!(x); loop(xs))
+  )
+in
+  loop(streamize_fileref_line(stdin_ref))
+end //  end of [echo]
+*)
+
+(* ****** ****** *)
+
 fun
 tally(): int = let
   fun
@@ -13,9 +30,12 @@ tally(): int = let
   (
     case+ !xs of
     | ~stream_vt_nil() => res
-    | ~stream_vt_cons(x, xs) => let
+    | ~stream_vt_cons(x, xs) =>
+      let
         val () =
-        println! ("Please input more or type Ctrl-D to end:")
+        if isneqz(x)
+          then println! ("Please input more or type Ctrl-D:")
+        // end of [if]
       in
         loop(xs, res+g0string2int(x))
       end
@@ -31,7 +51,7 @@ main0() = () where
 {
   val () = println!("Please input an integer:")
   val res = tally()
-  val () = println!("The tally of all the integers equals ", res)
+  val () = println!("The tally of the input integers equals ", res)
 }
 
 (* ****** ****** *)
