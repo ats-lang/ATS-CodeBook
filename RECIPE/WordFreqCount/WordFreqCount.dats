@@ -13,13 +13,14 @@ typedef nword = (int, string)
 extern
 fun
 print_free_nwordlst
-( N: int
+( i: int, N: int
 , nws: List_vt(nword)): void
 
 implement
-print_free_nwordlst(N, nws) =
+print_free_nwordlst
+  (i, N, nws) =
   if
-  N <= 0
+  i >= N
   then
   (
     list_vt_free<nword>(nws)
@@ -29,10 +30,10 @@ print_free_nwordlst(N, nws) =
     case+ nws of
     | ~list_vt_nil() => ()
     | ~list_vt_cons(nw, nws) =>
-      (
-        println!(nw.1, " -> ", nw.0);
-        print_free_nwordlst(N-1, nws)
-      )
+      print_free_nwordlst(i+1, N, nws) where
+      {
+        val () = println!(i+1, "\t", nw.1, " -> ", nw.0)
+      }
   )
 
 (* ****** ****** *)
@@ -168,8 +169,6 @@ fun
 stream_vt_char2nword
   (cs: stream_vt(char)): List0_vt(nword)
 
-(* ****** ****** *)
-
 implement
 stream_vt_char2nword(cs) = nws where
 {
@@ -197,7 +196,7 @@ main0(argc, argv) = let
    then argv[1] else MOBY_DICK): string
   val output = stream_by_url_(url)
 in
-  print_free_nwordlst(N, stream_vt_char2nword(output)); exit(0)
+  print_free_nwordlst(0, N, stream_vt_char2nword(output)); exit(0)
 end (* end of [main0] *)
 
 (* ****** ****** *)
