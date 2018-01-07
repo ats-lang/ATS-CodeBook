@@ -18,3 +18,4 @@ essentially the same as that of [ReadFromSTDIN](./ReadFromSTDIN), it
 is written is a different style, which greatly stresses the use of
 combinators in functional programming.
 
+## [WordFreqCount](./WordFreqCount)
