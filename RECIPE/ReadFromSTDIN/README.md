@@ -30,7 +30,7 @@ each string in the stream represents one line of input received from the
 file handle.
 
 The following function ```tally``` prompts the user to input integers
-and then returns the sum of all of the integers read from STDIN:
+and then returns at the end the sum of all of the integers read from STDIN:
 
 ```ats
 fun
@@ -54,7 +54,6 @@ tally(): int = let
   prompt(): void =
   println!
   ("Please input more or type Ctrl-D:")
-
 in
   println!("Please input one integer:");
   loop(streamize_fileref_line(stdin_ref), 0)
