@@ -29,7 +29,7 @@ testall:: cleanall
 
 ######
 
-regress:: ReadFromSTDIN_dats; ./$<
+regress:: ReadFromSTDIN_dats; echo 1000000 | ./$<
 
 ######
 

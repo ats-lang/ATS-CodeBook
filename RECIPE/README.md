@@ -21,7 +21,7 @@ combinators in functional programming.
 ## [WordFreqCount](./WordFreqCount)
 
 This example gives a stream-based implementation that counts words in
-a given on-line source and then sort these words according to they
+a given on-line source and then sorts these words according to their
 frequencies. It also explains a bit about using an npm-based package
 in ATS.
 

@@ -1,7 +1,7 @@
 # Counting Words
 
 This example gives a stream-based implementation that counts words
-in a given on-line source and then sort these words according to they
+in a given on-line source and then sorts these words according to they
 frequencies.
 
 We need a small package of the name *atscntrb-hx-teaching-bucs* to

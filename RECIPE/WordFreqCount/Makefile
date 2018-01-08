@@ -23,9 +23,8 @@ all:: WordFreqCount_dats
 
 ######
 
-testall:: all
-testall:: regress
-testall:: cleanall
+testall:: npm-install
+testall:: all regress cleanall
 
 ######
 

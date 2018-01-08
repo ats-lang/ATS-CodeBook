@@ -25,11 +25,12 @@ testall:: cleanall
 
 ######
 
-%_dats: %.dats; $(PATSCC) -DATS_MEMALLOC_LIBC -o $@ $< -latslib
+%_dats: %.dats; \
+$(PATSCC) -DATS_MEMALLOC_LIBC -o $@ $< -latslib
 
 ######
 
-regress:: ReadFromSTDIN2_dats; ./$<
+regress:: ReadFromSTDIN2_dats; echo 1000000 | ./$<
 
 ######
 

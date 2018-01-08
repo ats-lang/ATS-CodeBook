@@ -1,0 +1,24 @@
+######
+#
+# A simple Makefile
+#
+######
+
+SUBDIRS :=
+SUBDIRS += ./Hello
+SUBDIRS += ./ReadFromSTDIN
+SUBDIRS += ./ReadFromSTDIN2
+SUBDIRS += ./WordFreqCount
+
+.PHONY: testall
+
+######
+
+testall:: ; for i in $(SUBDIRS); do $(MAKE) -C "$$i" $@; done
+
+######
+
+cleanall:: ; for i in $(SUBDIRS); do $(MAKE) -C "$$i" $@; done
+
+###### end of [Makefile_test] ######
+
