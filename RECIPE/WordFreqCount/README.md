@@ -150,9 +150,10 @@ stream_vt_char2nword(cs) = nws where
 The code implementing ```stream_vt_char2nword``` is self-explanatory.
 
 When the default URL is used, the execution of the program in this example
-output the following table that lists the first 250 most frequently used words
-in the novel *Moby-Dick* by Herman Melville:
-
+outputs the following table that lists the first 250 most frequently used words
+in the novel [Moby-Dick](http://www.gutenberg.org/files/2701/2701-0.txt) by
+Herman Melville:
+  
 ```text
 1	the -> 14715
 2	of -> 6742
