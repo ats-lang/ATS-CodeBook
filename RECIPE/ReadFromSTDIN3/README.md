@@ -4,9 +4,9 @@ If you have not yet read [ReadFromSTDIN2](./ReadFromSTDIN2), please
 do so first.
 
 The code in this example does essentially the same as the code in
-[ReadFromSTDIN2](./ReadFromSTDIN2) except for using the ALARM signal
-to prevent the possible scenario of waiting indefinitely for the
-user's input.
+[ReadFromSTDIN2](./ReadFromSTDIN2) except for using the alarm signal
+(SIGALRM) to prevent the possible scenario of waiting indefinitely for
+the user's input.
 
 The types ```line``` and ```lineto``` are defined as follows:
 
@@ -74,5 +74,41 @@ stream_vt_lineto2line
 )
 ```
 
+The following code first sets a do-nothing signal
+handler for SIGALRM:
+
+```ats
+#staload
+"libats/libc/SATS/signal.sats"
+
+implement
+main0() = let
+var
+sigact: sigaction
+val () =
+ptr_nullize<sigaction>
+  (__assert__() | sigact) where
+{
+  extern
+  prfun
+  __assert__ :
+    () -> is_nullable(sigaction)
+} (* end of [val] *)
+//
+val () =
+sigact.sa_handler :=
+sighandler(lam(sgn) => ((*void*)))
+//
+val () =
+assertloc
+(sigaction_null(SIGALRM, sigact) = 0)
+//
+val res = tally() in println!("The tally of all the integers equals ", res)
+//
+end // end of [main0]
+```
+
+If this is not done, then an uncaught SIGALRM simply terminates
+program execution.
 
 Happy programming in ATS!!!
