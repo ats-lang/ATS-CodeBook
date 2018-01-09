@@ -25,7 +25,7 @@ This example does essentially the same as the code in
 (SIGALRM) to prevent the possible scenario of waiting indefinitely for
 the user's input.
 
-## [WordFreqCount](./WordFreqCount)
+## [WordFrqncyCount](./WordFrqncyCount)
 
 This example gives a stream-based implementation that counts words in
 a given on-line source and then sorts these words according to their
