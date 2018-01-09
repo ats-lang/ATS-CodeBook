@@ -61,7 +61,9 @@ file handle is blocked for more than ```nwait``` seconds, where
 then ```LNTOtimeout()``` is added into the stream.  Otherwise,
 ```LNTOtimeout(l0)``` is added into the stream for some linear string
 ```l0``` representing the currently line read from the file handle.
-
+And the following function ```streamize_fileref_line_``` is just a
+specialized version of ```streamize_fileref_lineto```:
+  
 ```ats
 fun
 streamize_fileref_line_
