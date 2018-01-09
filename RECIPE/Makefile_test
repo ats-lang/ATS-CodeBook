@@ -6,8 +6,10 @@
 
 SUBDIRS :=
 SUBDIRS += ./Hello
+SUBDIRS += ./HX-intinf
 SUBDIRS += ./ReadFromSTDIN
 SUBDIRS += ./ReadFromSTDIN2
+SUBDIRS += ./ReadFromSTDIN3
 SUBDIRS += ./WordFrqncyCount
 
 .PHONY: testall
