@@ -1,4 +1,4 @@
-# Read from STDIN (2)
+# Read from STDIN (3)
 
 If you have not yet read [ReadFromSTDIN2](./ReadFromSTDIN2), please
 do so first.
@@ -60,7 +60,7 @@ file handle is blocked for more than ```nwait``` seconds, where
 ```nwait``` is the second argument of ```streamize_fileref_lineto```,
 then ```LNTOtimeout()``` is added into the stream.  Otherwise,
 ```LNTOtimeout(l0)``` is added into the stream for some linear string
-```l0```.
+```l0``` representing the currently line read from the file handle.
 
 ```ats
 fun
