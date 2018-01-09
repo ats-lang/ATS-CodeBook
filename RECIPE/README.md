@@ -4,7 +4,12 @@
 
 This example shows how to construct a simple program in ATS, compile
 it and then execute it.
-  
+
+## [HX-intinf](./HX-intinf)
+
+This example presents a simple method for using GMP in ATS.
+It also makes use of some timing functions for measuring performance.
+
 ## [ReadFromSTDIN](./ReadFromSTDIN)
 
 This example demonstrates a stream-based approach to constructing an
