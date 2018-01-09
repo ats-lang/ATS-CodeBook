@@ -8,7 +8,7 @@ SUBDIRS :=
 SUBDIRS += ./Hello
 SUBDIRS += ./ReadFromSTDIN
 SUBDIRS += ./ReadFromSTDIN2
-SUBDIRS += ./WordFreqCount
+SUBDIRS += ./WordFrqncyCount
 
 .PHONY: testall
 

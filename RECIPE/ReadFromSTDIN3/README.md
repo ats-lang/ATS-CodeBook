@@ -110,7 +110,7 @@ val res = tally() in println!("The tally of all the integers equals ", res)
 end // end of [main0]
 ```
 
-If this is not done, then an uncaught SIGALRM simply terminates
+If no signal handler is set for SIGALRM, then an uncaught SIGALRM simply terminates
 program execution.
 
 Happy programming in ATS!!!

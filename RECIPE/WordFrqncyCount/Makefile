@@ -19,7 +19,7 @@ PATSLIB=$(PATSHOME)/ccomp/atslib
 
 ######
 
-all:: WordFreqCount_dats
+all:: WordFrqncyCount_dats
 
 ######
 
@@ -32,7 +32,7 @@ testall:: all regress cleanall
 
 ######
 
-regress:: WordFreqCount_dats; ./$<
+regress:: WordFrqncyCount_dats; ./$<
 
 ######
 
@@ -43,7 +43,7 @@ clean:: ; rm -f *_?ats.c
 cleanall:: clean
 cleanall:: ; rm -f node_modules -r
 cleanall:: ; rm -f package-lock.json
-cleanall:: ; rm -f WordFreqCount_dats
+cleanall:: ; rm -f WordFrqncyCount_dats
 
 ######
 
