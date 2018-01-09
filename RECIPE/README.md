@@ -21,8 +21,9 @@ combinators in functional programming.
 ## [ReadFromSTDIN3](./ReadFromSTDIN3)
 
 This example does essentially the same as the code in
-[ReadFromSTDIN3](./ReadFromSTDIN3) except for using the ALARM signal
-to prevent the scenario of waiting indefinitely for the user's input.
+[ReadFromSTDIN2](./ReadFromSTDIN2) except for using the ALARM signal
+to prevent the possible scenario of waiting indefinitely for the
+user's input.
 
 ## [WordFreqCount](./WordFreqCount)
 

@@ -5,7 +5,8 @@ do so first.
 
 The code in this example does essentially the same as the code in
 [ReadFromSTDIN2](./ReadFromSTDIN2) except for using the ALARM signal
-to prevent the scenario of waiting indefinitely for the user's input.
+to prevent the possible scenario of waiting indefinitely for the
+user's input.
 
 The types ```line``` and ```lineto``` are defined as follows:
 
