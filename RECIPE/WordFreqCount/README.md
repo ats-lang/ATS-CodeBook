@@ -27,7 +27,7 @@ local
 BUCS520 =
 $BUCS520_2016_FALL
 
-in
+in (* in-of-local *)
 
 extern
 fun

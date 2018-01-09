@@ -43,14 +43,17 @@ local
 #include
 "$PATSHOMELOCS\
 /atscntrb-hx-teaching-bucs/mylibies.hats"
+(*
 #include
 "$PATSHOMELOCS\
 /atscntrb-hx-teaching-bucs/mylibies_link.hats"
+*)
 
 #staload
-$BUCS520_2016_FALL // opening it
+BUCS520 =
+$BUCS520_2016_FALL
 
-in
+in (* in-of-local *)
 
 extern
 fun
@@ -59,7 +62,7 @@ stream_by_url_
 
 implement
 stream_by_url_(url) =
-stream_by_command<>
+$BUCS520.stream_by_command<>
 ("wget", $list{string}("-q", "-O", "-", url))
 
 end // end of [local]

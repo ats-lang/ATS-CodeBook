@@ -18,6 +18,12 @@ essentially the same as that of [ReadFromSTDIN](./ReadFromSTDIN), it
 is written in a different style, which greatly stresses the use of
 combinators in functional programming.
 
+## [ReadFromSTDIN3](./ReadFromSTDIN3)
+
+This example does essentially the same as the code in
+[ReadFromSTDIN3](./ReadFromSTDIN3) except for using the ALARM signal
+to prevent the scenario of waiting indefinitely for the user's input.
+
 ## [WordFreqCount](./WordFreqCount)
 
 This example gives a stream-based implementation that counts words in
