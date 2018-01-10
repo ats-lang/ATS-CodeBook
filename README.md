@@ -6,4 +6,6 @@ These examples are primarily meant as recipes for people
 interested in learning ATS as well as using it to construct
 software for use in the real world.
 
+## [RECIPE](./RECIPE)
 
+Please find various examples in this directory.
