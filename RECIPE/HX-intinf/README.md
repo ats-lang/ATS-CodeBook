@@ -23,7 +23,8 @@ product<a>
 ) (* end of [gfact3] *)
 ```
 
-where the function ```product``` is defined as follows:
+where the function ```product``` (for computing the product of the numbers
+in a given linear stream) is defined as follows:
 
 ```ats
 fun
@@ -68,7 +69,7 @@ The function ```my_time_spent``` is defined as follows
 for measuring the time spent on calling its argument
 (which is a nullary closure-function):
 
-````
+```ats
 #include
 "$PATSHOMELOCS\
 /atscntrb-hx-mytesting/mylibies.hats"
