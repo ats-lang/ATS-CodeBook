@@ -82,7 +82,7 @@ f0: cfun(a)
 ) : a = $TIMING.time_spent_cloref<a>(f0)
 ```
 
-The npm-based package *atscntrb-hx-mytesting* contains a few very
-simply timing functions based on the ```clock``` system call.
+The npm-based package *atscntrb-hx-mytesting* contains a few
+simple timing functions based on the ```clock``` system call.
   
 Happy programming in ATS!!!
