@@ -22,28 +22,6 @@ end // end of [let] // end of [gfact1]
 
 fun
 {a:t0p}
-product
-(xs: stream_vt(a)): a = let
-//
-overload * with gmul_val_val
-//
-fun
-loop
-(xs: stream_vt(a), r0: a): a =
-(
-case+ !xs of
-| ~stream_vt_nil() => r0
-| ~stream_vt_cons(x0, xs) => loop(xs, r0*x0)
-)
-//
-in
-  loop(xs, gnumber_int<a>(1))
-end // end of [product]
-
-(* ****** ****** *)
-
-fun
-{a:t0p}
 gfact2(n: int): a = let
 //
 overload * with gmul_int_val
@@ -70,11 +48,31 @@ end // end of [let] // end of [gfact2]
 
 fun
 {a:t0p}
+product
+(xs: stream_vt(a)): a = let
+//
+overload * with gmul_val_val
+//
+fun
+loop
+(xs: stream_vt(a), r0: a): a =
+(
+case+ !xs of
+| ~stream_vt_nil() => r0
+| ~stream_vt_cons(x0, xs) => loop(xs, r0*x0)
+)
+//
+in
+  loop(xs, gnumber_int<a>(1))
+end // end of [product]
+
+fun
+{a:t0p}
 gfact3(n: int): a =
 product<a>
 (stream_vt_map_cloptr
  (streamize_intrange_lr<>(0, n), lam(i) => gnumber_int<a>(i+1))
-)
+) (* end of [gfact3] *)
 
 (* ****** ****** *)
 
@@ -141,6 +139,8 @@ main0((*void*)) =
   val () = println! ("gfact1(", N, ") = ", r1)
   val () = println! ("gfact2(", N, ") = ", r2)
   val () = println! ("gfact2(", N, ") = ", r3)
+*)
+(*
   val () = println! ("derangement(", N, ") = ", d0)
 *)
 //
