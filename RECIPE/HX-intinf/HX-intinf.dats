@@ -127,19 +127,24 @@ main0((*void*)) =
 //
   val r1 =
   my_time_spent<a>(lam()=>gfact1<a>(N))
+(*
+  val () = println! ("gfact1(", N, ") = ", r1)
+*)
+//
   val r2 =
   my_time_spent<a>(lam()=>gfact2<a>(N))
+(*
+  val () = println! ("gfact2(", N, ") = ", r2)
+*)
+//
   val r3 =
   my_time_spent<a>(lam()=>gfact3<a>(N))
+(*
+  val () = println! ("gfact3(", N, ") = ", r3)
+*)
 //
   val d0 =
   my_time_spent<a>(lam()=>derangement<a>(N))
-//
-(*
-  val () = println! ("gfact1(", N, ") = ", r1)
-  val () = println! ("gfact2(", N, ") = ", r2)
-  val () = println! ("gfact2(", N, ") = ", r3)
-*)
 (*
   val () = println! ("derangement(", N, ") = ", d0)
 *)
