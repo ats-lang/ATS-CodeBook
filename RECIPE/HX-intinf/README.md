@@ -10,8 +10,8 @@ instance, one can use these operations to compute the 1000th power of
 npm-based package of the name *atscntrb-libgmp*, which is just a thin
 API layer for various functions in the GMP library.
 
-The following code gives a generic implementation of
-of the famous factorial function:
+The following code gives a generic implementation of the famous
+factorial function:
 
 ```ats
 fun
