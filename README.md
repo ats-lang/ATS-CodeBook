@@ -1,4 +1,4 @@
-# Coding Examples in ATS
+# ATS-CodeBook
 
 This repository contains coding examples of all sorts
 written in ATS and possibly other programming languages.
@@ -6,6 +6,6 @@ These examples are primarily meant as recipes for people
 interested in learning ATS as well as using it to construct
 software for use in the real world.
 
-## [RECIPE](./RECIPE)
+## [ATS-CodeBook/RECIPE](./RECIPE)
 
 Please find various examples in this directory.
