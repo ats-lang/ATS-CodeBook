@@ -7,15 +7,20 @@
 //
 fun
 {a:t0p}
-gfact1(n: int): a =
-let
-  overload * with gmul_int_val
+gfact1(n: int): a = let
+//
+overload * with gmul_int_val
+//
 in
-  (fix
-   f( i: int
-    , n: int, r: a): a =>
-   if i < n then f(i+1, n, (i+1)*r) else r
-  )(0, n, gnumber_int<a>(1))
+//
+(fix
+ f( i: int
+  , n: int, r: a): a =>
+ if i < n
+   then f(i+1, n, (i+1)*r) else r
+ // end of [if]
+)(0, n, gnumber_int<a>(1))
+//
 end // end of [let] // end of [gfact1]
 //
 (* ****** ****** *)
@@ -143,10 +148,10 @@ main0((*void*)) =
   val () = println! ("gfact3(", N, ") = ", r3)
 *)
 //
-  val d0 =
+  val r4 =
   my_time_spent<a>(lam()=>derangement<a>(N))
 (*
-  val () = println! ("derangement(", N, ") = ", d0)
+  val () = println! ("derangement(", N, ") = ", r4)
 *)
 //
 } (* end of [main0] *)
