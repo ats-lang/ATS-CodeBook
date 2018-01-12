@@ -8,7 +8,7 @@ code in [ReadFromSTDIN](./ReadFromSTDIN), but it is written in a
 different style, which greatly stresses the use of combinators in
 functional programming.
 
-The following function ```prompts``` returns a linear stream of
+The following function `prompts` returns a linear stream of
 integers:
   
 ```ats
@@ -31,7 +31,7 @@ For each integer in the stream to be computed, a message (for the
 purpose of prompting the user) is printed onto the standard output
 (STDOUT).
 
-The function ```tally``` can be given the following combinator-based
+The function `tally` can be given the following combinator-based
 implementation:
 
 
@@ -50,12 +50,12 @@ in
 end // end of [tally]
 ```
 
-The code for ```tally``` is largely self-explanatory: ```ps``` refers
-to a stream for producing prompts and ```xs``` to a stream of strings
-representing non-empty lines read from STDIN; calling ```map2``` on
-```ps``` and ```xs``` (with some closure-function) builds a stream
-```ys``` of integers where each integer is converted from a string in
-```xs```; calling ```foldleft``` on ```ys``` returns the sum of all of
-the integers contained in ```ys```.
+The code for `tally` is largely self-explanatory: `ps` refers
+to a stream for producing prompts and `xs` to a stream of strings
+representing non-empty lines read from STDIN; calling `map2` on
+`ps` and `xs` (with some closure-function) builds a stream
+`ys` of integers where each integer is converted from a string in
+`xs`; calling `foldleft` on `ys` returns the sum of all of
+the integers contained in `ys`.
 
 Happy programming in ATS!!!

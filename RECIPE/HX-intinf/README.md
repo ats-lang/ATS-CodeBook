@@ -23,7 +23,7 @@ product<a>
 ) (* end of [gfact3] *)
 ```
 
-where the function ```product``` (for computing the product of the numbers
+where the function `product` (for computing the product of the numbers
 in a given linear stream) is defined as follows:
 
 ```ats
@@ -49,7 +49,7 @@ end // end of [product]
 ```
 
 We can simply load the package *atscntrb-hx-intinf*
-to test ```gfact3``` for the type ```intinf```:
+to test `gfact3` for the type `intinf`:
 
 ```ats
 #include
@@ -65,7 +65,7 @@ overload print with $GINTINF_t.print_intinf
 //
 ```
 
-The function ```my_time_spent``` is defined as follows
+The function `my_time_spent` is defined as follows
 for measuring the time spent on calling its argument
 (which is a nullary closure-function):
 
@@ -83,6 +83,6 @@ f0: cfun(a)
 ```
 
 The npm-based package *atscntrb-hx-mytesting* contains a few
-simple timing functions based on the ```clock``` system call.
+simple timing functions based on the `clock` system call.
   
 Happy programming in ATS!!!

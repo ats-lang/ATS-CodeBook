@@ -1,11 +1,11 @@
 # Read from STDIN
 
-One can certainly use ```scanf``` to read from
+One can certainly use `scanf` to read from
 the standard input (STDIN). What I would like to
 present in this example is the idea of treating
 STDIN as a linear stream of lines (where each line
 is represented as a string). For instance, the
-following function ```echo``` prints onto the standard
+following function `echo` prints onto the standard
 output each line read from the standard input:
 
 ```ats
@@ -23,13 +23,13 @@ in
 end //  end of [echo]
 ```
 
-The function ```streamize_fileref_line``` is often referred to as a
+The function `streamize_fileref_line` is often referred to as a
 streamization function, which in this case turns a given file handle
-(of the type ```FILEref```) into a linear stream of strings such that
+(of the type `FILEref`) into a linear stream of strings such that
 each string in the stream represents one line of input received from the
 file handle.
 
-The following function ```tally``` prompts the user to input integers
+The following function `tally` prompts the user to input integers
 and then returns at the end the sum of all of the integers read from STDIN:
 
 ```ats
@@ -59,8 +59,8 @@ in
   loop(streamize_fileref_line(stdin_ref), 0)
 end // end of [tally]
 ```
-Note that the function ```isneqz``` checks whether a
-given string is empty and the function ```g0string2int```
+Note that the function `isneqz` checks whether a
+given string is empty and the function `g0string2int`
 converts a given string into the int-value it represents.
 
 As far as I can tell, linear streams are so far a programming feature

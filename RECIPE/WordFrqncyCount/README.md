@@ -7,14 +7,14 @@ frequencies.
 We need a small package of the name *atscntrb-hx-teaching-bucs* to
 turn the source referred to by a URL into a linear stream of
 characters.  This package can be downloaded by executing
-```make npm-install``` or by issuing the following command-line:
+`make npm-install` or by issuing the following command-line:
 
 ```shell
 npm install atscntrb-hx-teaching-bucs
 ```
 
-We can implement a function ```stream_by_url_``` based on one of the
-name ```stream_by_command``` in the downloaded package:
+We can implement a function `stream_by_url_` based on one of the
+name `stream_by_command` in the downloaded package:
   
 ```ats
 local
@@ -42,10 +42,10 @@ $BUCS520.stream_by_command<>
 end // end of [local]
 ```
 
-The function ```stream_by_url_``` calls the command ```wget```
+The function `stream_by_url_` calls the command `wget`
 (with some options) to fetch the source referred to by a given URL.
-One can of course try to implement ```stream_by_url_``` based
-on the command ```curl``` as well.
+One can of course try to implement `stream_by_url_` based
+on the command `curl` as well.
 
 We use the following type aliases in the rest of the presentation:
 
@@ -121,14 +121,14 @@ stream_vt_char2word
 
 Note that each word is just a non-empty sequence of letters in the
 English alphabet. Also, each word in the returned stream consists of
-only lowercase letters. Both ```auxmain``` and ```auxmain_con``` are
+only lowercase letters. Both `auxmain` and `auxmain_con` are
 tail-recursive, presenting no risk of stack-overflow even when they
 are called on a linear stream of infinite length! In general, paying
 close attention to addressing potential risk of stack-overflow is of
 great importance in constructing code of high quality.
 
 
-The function ```stream_vt_char2nword``` does the work of assembling:
+The function `stream_vt_char2nword` does the work of assembling:
 
 ```ats
 extern
@@ -147,7 +147,7 @@ stream_vt_char2nword(cs) = nws where
 }
 ```
 
-The code implementing ```stream_vt_char2nword``` is self-explanatory.
+The code implementing `stream_vt_char2nword` is self-explanatory.
 
 When the default URL is used, the execution of the program in this example
 outputs the following table that lists the first 250 most frequently used words
