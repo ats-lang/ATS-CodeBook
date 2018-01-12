@@ -46,9 +46,11 @@ end // end of [GameLoop]
 ```
 
 Note that `GameLoop` takes two arguments: The first argument refers
-to the current state of the game being played and the second one is
-a linear stream representing inputs from the player. The state is updated
-according to the current input from the player:
+to the current state of the game being played and the second one is a
+linear stream representing inputs from the player. The state is passed
+as a call-by-reference argument, and it is updated according to the
+current input from the player:
+
 
 ```
 implement
