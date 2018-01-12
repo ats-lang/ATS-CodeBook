@@ -30,6 +30,14 @@ This example does essentially the same as the code in
 (SIGALRM) to prevent the possible scenario of waiting indefinitely for
 the user's input.
 
+## [Hangman](./Hangman)
+
+This example gives a straightforward implementation of Hangman, the
+famous word-guessing game. A linear stream is employed to handle inputs
+from the player. Also, the game-state is passed as a call-by-reference
+argument to the game-loop (so as for it to be updated).
+  
+
 ## [WordFrqncyCount](./WordFrqncyCount)
 
 This example gives a stream-based implementation that counts words in

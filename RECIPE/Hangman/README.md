@@ -72,7 +72,8 @@ case+ !xs of
 | ~stream_vt_nil() => (~1) where
   {
     val () =
-    println! ("ERROR: there is no input from the player!!!")
+    println!
+    ("ERROR: no input from the player!!!")
   }
 | ~stream_vt_cons(x0, xs) =>
   let
