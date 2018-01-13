@@ -32,7 +32,7 @@ the user's input.
 
 ## [Hangman](./Hangman)
 
-This example gives a straightforward implementation of Hangman, the
+This example gives a straightforward implementation of Hangman, a
 famous word-guessing game. A linear stream is employed to handle inputs
 from the player. Also, the game-state is passed as a call-by-reference
 argument to the game-loop (so as for it to be updated).
