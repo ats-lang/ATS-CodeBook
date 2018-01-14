@@ -5,7 +5,7 @@ do so first.
 
 The following code builds a stream of input chars based
 a simple web service provided at
-[http://cs320.herokuapp.com](http://cs320.herokuapp.com).
+[http://cs320.herokuapp.com](http://cs320.herokuapp.com):
 
 
 ```ats
@@ -52,9 +52,7 @@ $BUCS520.stream_by_command<>
 
 implement
 streamize_channel00
-  ((*void*)) =
-  auxjoin(0) where
-{
+  ((*void*)) = let
 //
 fun
 auxone
@@ -87,12 +85,12 @@ n0: int
 ,
 xs: jsonvalist
 ,
-r0: List0_vt(string)
+cs: List0_vt(string)
 ) : List0_vt(string) =
 (
 case+ xs of
 | list_nil() =>
-  (list_vt_reverse(r0))
+  (list_vt_reverse(cs))
 | list_cons(x0, xs) => let
     val-JSONstring(x0) = x0
     val i0 = $STDLIB.atoi(x0)
@@ -100,9 +98,9 @@ case+ xs of
     if
     i0 <= n0
     then
-    list_vt_reverse(r0)
+    list_vt_reverse(cs)
     else
-    auxone2(n0, xs, list_vt_cons(x0, r0))
+    auxone2(n0, xs, list_vt_cons(x0, cs))
   end // end of [list_cons]
 )
 //
@@ -148,14 +146,18 @@ case+ xs of
 ), (list_vt_free(xs))
 )
 //
-val
-output =
-stream_by_url_(Channel00Clearall)
-val
-((*freed*)) =
-list_vt_free(stream2list_vt(output))
+in
 //
-} // end of [streamize_channel00]
+let
+  val
+  output =
+  stream_by_url_(Channel00Clearall)
+  val
+  ((*freed*)) =
+  list_vt_free(stream2list_vt(output)) in auxjoin(0)
+end (* end of [let] *)
+//
+end // end of [streamize_channel00]
 
 end // end of [local]
 ```

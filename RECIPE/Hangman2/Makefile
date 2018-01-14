@@ -42,6 +42,8 @@ clean:: ; rm -f *_?ats.c
 
 cleanall:: clean
 cleanall:: ; rm -f Hangman2_dats
+cleanall:: ; rm -f node_modules -r
+cleanall:: ; rm -f package-lock.json
 
 ######
 
