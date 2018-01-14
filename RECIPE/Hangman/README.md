@@ -62,6 +62,9 @@ val () =
 println!
 ("Chances: ", state.ntime)
 val () =
+println!
+("Guessed: ", state.guess)
+val () =
 word_display
 (state.word0, state.guess)
 //
