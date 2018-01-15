@@ -2,7 +2,8 @@
 
 Hangman is a simple word-guessing game.
 
-The program chooses a word in some random fashion and then gives
+The program in this example
+chooses a word in some random fashion and then gives
 the player a fixed number of chances to guess the word. The player
 can guess one letter each time; if the letter does not appear in the
 word, then the player loses a chance; otherwise, each occurrence of
