@@ -37,7 +37,11 @@ famous word-guessing game. A linear stream is employed to handle inputs
 from the player. Also, the game-state is passed as a call-by-reference
 argument to the game-loop (so as for it to be updated).
   
+## [Hangman2](./Hangman2)
 
+This example implements a distributed version of the Hangman game,
+making use of a simple web service to handle I/O.
+  
 ## [WordFrqncyCount](./WordFrqncyCount)
 
 This example gives a stream-based implementation that counts words in
