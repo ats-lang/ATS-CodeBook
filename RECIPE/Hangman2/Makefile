@@ -20,7 +20,7 @@ PATSLIB=$(PATSHOME)/ccomp/atslib
 ######
 
 all:: Hangman2_dats
-all:: GameKeyboard_dats
+all:: Hangman2_input_dats
 
 ######
 
@@ -36,8 +36,8 @@ $(PATSCC) -I./node_modules \
 #
 ######
 #
-GameKeyboard_dats: \
-GameKeyboard.dats; \
+Hangman2_input_dats: \
+Hangman2_input.dats; \
 $(PATSCC) -I./node_modules -DATS_MEMALLOC_LIBC -o $@ $< -latslib
 #
 ######
@@ -48,7 +48,7 @@ clean:: ; rm -f *_?ats.c
 
 cleanall:: clean
 cleanall:: ; rm -f Hangman2_dats
-cleanall:: ; rm -f GameKeyboard_dats
+cleanall:: ; rm -f Hangman2_input_dats
 cleanall:: ; rm -f node_modules -r
 cleanall:: ; rm -f package-lock.json
 

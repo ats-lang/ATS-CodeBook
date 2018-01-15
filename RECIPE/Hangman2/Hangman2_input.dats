@@ -18,13 +18,9 @@ Channel00Insert
 //
 in (* in-of-local *)
 
-extern
 fun
-GameKeyboard(): void
-
-implement
-GameKeyboard() =
-{
+GameKeyboard
+  (): void = {
 //
 fun
 auxmain
@@ -50,6 +46,7 @@ case+ !lines of
      val err =
      $STDLIB.system
      ("wget -q -O - " + url + " > /dev/null")
+//
    in
       auxmain(lines)
    end // end of [then]
@@ -62,7 +59,14 @@ case+ !lines of
 ) (* end of [auxmain] *)
 //
 val () =
-auxmain(streamize_fileref_line(stdin_ref))
+auxmain(lines) where
+{
+  val
+  inp = stdin_ref
+  val
+  lines=
+  streamize_fileref_line(inp)
+} (* end of [val] *)
 //
 } (* end of [GameKeyboard] *)
 
@@ -70,8 +74,9 @@ end // end of [local]
 
 (* ****** ****** *)
 
-implement main0 () = GameKeyboard()
+implement
+main0 () = GameKeyboard()
 
 (* ****** ****** *)
 
-(* end of [GameKeyboard.dats] *)
+(* end of [Hangman2_input.dats] *)

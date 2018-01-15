@@ -186,13 +186,9 @@ Channel00Insert
 //
 in (* in-of-local *)
 
-extern
 fun
-GameKeyboard(): void
-
-implement
-GameKeyboard() =
-{
+GameKeyboard
+  (): void = {
 //
 fun
 auxmain
@@ -204,7 +200,7 @@ stream_vt(string)
 //
 case+ !lines of
 | ~stream_vt_nil
-   () => ()
+   ((*void*)) => ()
 | ~stream_vt_cons
    (line, lines) =>
   (
@@ -218,6 +214,7 @@ case+ !lines of
      val err =
      $STDLIB.system
      ("wget -q -O - " + url + " > /dev/null")
+//
    in
       auxmain(lines)
    end // end of [then]
@@ -230,7 +227,14 @@ case+ !lines of
 ) (* end of [auxmain] *)
 //
 val () =
-auxmain(streamize_fileref_line(stdin_ref))
+auxmain(lines) where
+{
+  val
+  inp = stdin_ref
+  val
+  lines=
+  streamize_fileref_line(inp)
+} (* end of [val] *)
 //
 } (* end of [GameKeyboard] *)
 
