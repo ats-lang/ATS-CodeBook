@@ -20,19 +20,25 @@ PATSLIB=$(PATSHOME)/ccomp/atslib
 ######
 
 all:: Hangman2_dats
-regress:: Hangman2_dats; ./$<
+all:: GameKeyboard_dats
 
 ######
 
 testall:: npm-install
-testall:: all regress cleanall
+testall:: all cleanall
 
 ######
 #
 Hangman2_dats: \
 Hangman2.dats; \
 $(PATSCC) -I./node_modules \
-  -DATS_MEMALLOC_LIBC -o $@ $< -latslib -ljson-c
+  -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $< -latslib -ljson-c
+#
+######
+#
+GameKeyboard_dats: \
+GameKeyboard.dats; \
+$(PATSCC) -I./node_modules -DATS_MEMALLOC_LIBC -o $@ $< -latslib
 #
 ######
 
@@ -42,6 +48,7 @@ clean:: ; rm -f *_?ats.c
 
 cleanall:: clean
 cleanall:: ; rm -f Hangman2_dats
+cleanall:: ; rm -f GameKeyboard_dats
 cleanall:: ; rm -f node_modules -r
 cleanall:: ; rm -f package-lock.json
 
@@ -49,5 +56,10 @@ cleanall:: ; rm -f package-lock.json
 
 npm-update:: ; $(NPM) update
 npm-install:: ; $(NPM) install
+
+######
+
+export \
+PATSHOMELOCS=./node_modules:./../node_modules:./../../node_modules
 
 ###### end of [Makefile] ######

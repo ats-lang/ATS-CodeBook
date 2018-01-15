@@ -1,7 +1,8 @@
 (* ****** ****** *)
 (*
 ** HX-2018-01:
-** Hangman: a word-guessing game
+** Hangman:
+** a word-guessing game
 *)
 (* ****** ****** *)
 //
@@ -240,6 +241,8 @@ main0() = () where
 //
 val nt = 6
 val w0 = "camouflage"
+//
+val () = println!("Start!")
 //
 var
 state: state

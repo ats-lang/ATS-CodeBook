@@ -1,4 +1,4 @@
-# Hangman
+# Hangman (2)
 
 If you have not yet read [Hangman](./Hangman), please
 do so first.
@@ -110,6 +110,14 @@ auxjoin
 n0: int
 ) :
 stream_vt(string) =
+$ldelay(auxjoin_con(n0))
+//
+and
+auxjoin_con
+(
+n0: int
+) :
+stream_vt_con(string) =
 let
   val xs = auxone(n0)
 in
@@ -117,15 +125,15 @@ in
 case+ xs of
 | ~list_vt_nil
     () =>
-    auxjoin(n0) where
+    auxjoin_con(n0) where
   {
     val _ = $UNISTD.sleep(1)
   }
 | ~list_vt_cons
     (x0, xs) =>
-    stream_vt_make_cons(x0, auxjoin2(x0, xs))
+    stream_vt_cons(x0, auxjoin2(x0, xs))
 //
-end // end of [auxjoin]
+end // end of [auxjoin_con]
 //
 and
 auxjoin2
@@ -158,6 +166,73 @@ let
 end (* end of [let] *)
 //
 end // end of [streamize_channel00]
+
+end // end of [local]
+```
+
+The player can use the following function
+to input letters:
+
+
+```ats
+local
+//
+#staload
+STDLIB = "libats/libc/SATS/stdlib.sats"
+//
+#define
+Channel00Insert
+"http://cs320.herokuapp.com/api/channel00/insert"
+//
+in (* in-of-local *)
+
+extern
+fun
+GameKeyboard(): void
+
+implement
+GameKeyboard() =
+{
+//
+fun
+auxmain
+(
+lines:
+stream_vt(string)
+) : void =
+(
+//
+case+ !lines of
+| ~stream_vt_nil
+   () => ()
+| ~stream_vt_cons
+   (line, lines) =>
+  (
+   if
+   isneqz(line)
+   then let
+//
+     val url =
+     string_append3
+     (Channel00Insert, "/", line)
+     val err =
+     $STDLIB.system
+     ("wget -q -O - " + url + " > /dev/null")
+   in
+      auxmain(lines)
+   end // end of [then]
+   else
+   (
+      auxmain(lines)
+   ) (* end of [else] *)
+  )
+//
+) (* end of [auxmain] *)
+//
+val () =
+auxmain(streamize_fileref_line(stdin_ref))
+//
+} (* end of [GameKeyboard] *)
 
 end // end of [local]
 ```

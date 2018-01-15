@@ -1,12 +1,16 @@
 (* ****** ****** *)
 (*
 ** HX-2018-01:
-** Hangman: a word-guessing game
+** Hangman2:
+** a word-guessing game
 *)
 (* ****** ****** *)
 //
-abst@ype state
-abst@ype input
+abst@ype state_t0ype
+abst@ype input_t0ype
+//
+typedef state = state_t0ype
+typedef input = input_t0ype
 //
 (* ****** ****** *)
 
@@ -73,6 +77,14 @@ end // end of [GameLoop]
 #include
 "share/atspre_staload_libats_ML.hats"
 
+(* ****** ****** *)
+//
+extern
+fun
+GameMain(): void
+//
+implement main0() = GameMain((*void*))
+//
 (* ****** ****** *)
 //
 extern
@@ -187,6 +199,14 @@ auxjoin
 n0: int
 ) :
 stream_vt(string) =
+$ldelay(auxjoin_con(n0))
+//
+and
+auxjoin_con
+(
+n0: int
+) :
+stream_vt_con(string) =
 let
   val xs = auxone(n0)
 in
@@ -194,15 +214,15 @@ in
 case+ xs of
 | ~list_vt_nil
     () =>
-    auxjoin(n0) where
+    auxjoin_con(n0) where
   {
     val _ = $UNISTD.sleep(1)
   }
 | ~list_vt_cons
     (x0, xs) =>
-    stream_vt_make_cons(x0, auxjoin2(x0, xs))
+    stream_vt_cons(x0, auxjoin2(x0, xs))
 //
-end // end of [auxjoin]
+end // end of [auxjoin_con]
 //
 and
 auxjoin2
@@ -240,10 +260,32 @@ end // end of [local]
 
 (* ****** ****** *)
 
+fun
+is_guessed
+( c0: char
+, guess: list0(char)
+) : bool =
+(guess).exists()(lam(c1) => c0=c1)
+
+fun
+word_display
+( word0: string
+, guess: list0(char)
+) : void =
+(
+(word0).foreach()
+(lam(c0) =>
+ print_char
+ (if is_guessed(c0, guess) then c0 else '_')
+)
+) (* end of [word_display] *)
+
+(* ****** ****** *)
+
 local
 
 assume
-state = @{
+state_t0ype = @{
   ntime= int
 ,
   word0= string
@@ -251,14 +293,8 @@ state = @{
   guess= list0(char)
 }
 
-assume input = char
+assume input_t0ype = char
 
-fun
-is_guessed
-( c0: char
-, guess: list0(char)
-) : bool =
-(guess).exists()(lam(c1) => c0=c1)
 fun
 is_contained
 ( c0: char
@@ -273,20 +309,6 @@ is_solved
 ) : bool =
 (w0).forall()
 (lam(c0) => is_guessed(c0, guess))
-
-
-fun
-word_display
-( word0: string
-, guess: list0(char)
-) : void =
-(
-(word0).foreach()
-(lam(c0) =>
- print_char
- (if is_guessed(c0, guess) then c0 else '_')
-)
-) (* end of [word_display] *)
 
 in (* in-of-local *)
 
@@ -400,11 +422,13 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-main0() = () where
+GameMain() =
 {
 //
 val nt = 6
 val w0 = "camouflage"
+//
+val () = println!("Start!")
 //
 var
 state: state
@@ -435,8 +459,7 @@ in
 //
 if
 iseqz(c0)
-then ""
-else
+then "" else
 (
 if
 (c0 != ':')
@@ -476,13 +499,16 @@ case+ !xs of
 )
 }
 //
-val ntime =
-GameLoop(state, chars) where { reassume input }
+val
+ntime =
+GameLoop(state, chars)
+where
+{ reassume input_t0ype }
 //
 val ((*void*)) = println! ("Game Over: ", ntime)
 //
-} (* end of [main0] *)
+} (* end of [GameMain] *)
 
 (* ****** ****** *)
 
-(* end of [Hangman.dats] *)
+(* end of [Hangman2.dats] *)
