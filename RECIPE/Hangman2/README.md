@@ -31,10 +31,6 @@ STDLIB = "libats/libc/SATS/stdlib.sats"
 #staload
 UNISTD = "libats/libc/SATS/unistd.sats"
 
-#staload
-BUCS520 =
-$BUCS520_2018_Spring
-
 #define
 Channel00Readall
 "http://cs320.herokuapp.com/api/channel00/readall"
