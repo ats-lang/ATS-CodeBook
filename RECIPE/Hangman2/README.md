@@ -161,7 +161,8 @@ case+ xs of
 //
 in
 //
-let
+auxjoin(0) where
+{
   val
   opt =
   stream_by_url_(Channel00Clearall)
@@ -169,8 +170,8 @@ let
   ((*freed*)) =
   (case+ opt of
    | ~None_vt() => ()
-   | ~Some_vt(cs) => lazy_vt_free(cs)) in auxjoin(0)
-end (* end of [let] *)
+   | ~Some_vt(cs) => free(stream2list_vt(cs)))
+} (* end of [where] *)
 //
 end // end of [streamize_channel00]
 
