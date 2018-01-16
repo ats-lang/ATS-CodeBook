@@ -33,7 +33,7 @@ UNISTD = "libats/libc/SATS/unistd.sats"
 
 #staload
 BUCS520 =
-$BUCS520_2016_FALL
+$BUCS520_2018_Spring
 
 #define
 Channel00Readall
@@ -46,9 +46,7 @@ in (* in-of-local *)
 
 implement
 stream_by_url_(url) =
-$BUCS520.stream_by_command<>
-( "wget"
-, $list{string}("-q", "-O", "-", url))
+$BUCS520.streamopt_url_char<>(url)
 
 implement
 streamize_channel00
@@ -59,14 +57,21 @@ auxone
 (n0: int):
 List0_vt(string) = let
 //
-val input =
+val opt =
 stream_by_url_
 (Channel00Readall)
+//
 val input =
-string_make_stream_vt
-($UN.castvwtp0(input))
-val input =
-  strptr2string(input)
+(
+case+ opt of
+| ~None_vt() => ""
+| ~Some_vt(input) =>
+  strptr2string
+  (
+    string_make_stream_vt
+    ($UN.castvwtp0(input))
+  )
+) : string // end of [val]
 //
 val-
 JSONarray(jsvs) =
@@ -158,11 +163,13 @@ in
 //
 let
   val
-  output =
+  opt =
   stream_by_url_(Channel00Clearall)
   val
   ((*freed*)) =
-  list_vt_free(stream2list_vt(output)) in auxjoin(0)
+  (case+ opt of
+   | ~None_vt() => ()
+   | ~Some_vt(cs) => lazy_vt_free(cs)) in auxjoin(0)
 end (* end of [let] *)
 //
 end // end of [streamize_channel00]

@@ -1,8 +1,8 @@
 {
   "dependencies": {
+    "atscntrb-libcurl": "^1.0.3",
     "atscntrb-libjson-c": "^1.0.2",
     "atscntrb-hx-threadkit": "^1.0.3",
-    "atscntrb-hx-fworkshop": "^1.0.2",
-    "atscntrb-hx-teaching-bucs": "^1.0.6"
+    "atscntrb-hx-fworkshop": "^1.0.2"
   }
 }
