@@ -105,6 +105,29 @@ is_contained
 (* ****** ****** *)
 
 fun
+word_choose
+(
+// argless
+) : string = let
+//
+val lines =
+streamize_fileref_line
+  (stdin_ref)
+//
+in
+//
+case+ !lines of
+| ~stream_vt_nil
+   ((*void*)) => "camouflage"
+| ~stream_vt_cons
+   (w0, lines) =>
+   let val () = free(lines) in w0 end
+//
+end // end of [word_choose]
+
+(* ****** ****** *)
+
+fun
 word_display
 ( word0: string
 , guess: list0(char)
@@ -144,9 +167,13 @@ Channel01Insert
 #define
 Channel00Readall
 "http://cs320.herokuapp.com/api/channel00/readall"
+
 #define
 Channel00Clearall
 "http://cs320.herokuapp.com/api/channel00/clearall"
+#define
+Channel01Clearall
+"http://cs320.herokuapp.com/api/channel01/clearall"
 
 (* ****** ****** *)
 //
@@ -176,6 +203,18 @@ in
   | ~None_vt() => ()
   | ~Some_vt(cs) => free(stream2list_vt(cs))
 end // end of [channel00_clearall]
+
+fun
+channel01_clearall
+  ((*void*)): void = let
+  val opt =
+  $BUCS520.streamopt_url_char<>
+    (Channel01Clearall)
+in
+  case+ opt of
+  | ~None_vt() => ()
+  | ~Some_vt(cs) => free(stream2list_vt(cs))
+end // end of [channel01_clearall]
 
 (* ****** ****** *)
 
@@ -384,12 +423,17 @@ GameMain((*void*)) =
 {
 //
 val nt = 6
-val w0 = "camouflage"
+//
+val () =
+println!
+("Choose a word:")
+val w0 =
+word_choose((*void*))
 //
 val () =
 channel00_clearall()
-//
-val () = println!("Start!")
+val () =
+channel01_clearall()
 //
 val () =
 channel01_insert_msg

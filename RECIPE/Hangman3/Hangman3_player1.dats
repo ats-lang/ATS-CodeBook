@@ -47,9 +47,6 @@ Channel00Insert
 #define
 Channel01Readall
 "http://cs320.herokuapp.com/api/channel01/readall"
-#define
-Channel01Clearall
-"http://cs320.herokuapp.com/api/channel01/clearall"
 
 (* ****** ****** *)
 //
@@ -66,20 +63,6 @@ in
   | ~Some_vt(cs) => free(stream2list_vt(cs))
 end // end of [channel00_insert_msg]
 //
-(* ****** ****** *)
-
-fun
-channel01_clearall
-  ((*void*)): void = let
-  val opt =
-  $BUCS520.streamopt_url_char<>
-    (Channel01Clearall)
-in
-  case+ opt of
-  | ~None_vt() => ()
-  | ~Some_vt(cs) => free(stream2list_vt(cs))
-end // end of [channel01_clearall]
-
 (* ****** ****** *)
 //
 extern
@@ -192,8 +175,6 @@ GameMain((*void*)) =
 {
 //
 val nt = 6
-val () =
-channel01_clearall()
 //
 var
 state: state
