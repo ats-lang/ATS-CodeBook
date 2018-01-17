@@ -42,6 +42,12 @@ argument to the game-loop (so as for it to be updated).
 This example implements a distributed version of the Hangman game,
 making use of a simple web service to handle I/O.
   
+## [Hangman3](./Hangman3)
+
+This example implements another distributed version of the Hangman
+game for two independent players, who communicate with each other
+through two untyped uni-directional channels.
+  
 ## [WordFrqncyCount](./WordFrqncyCount)
 
 This example gives a stream-based implementation that counts words in
