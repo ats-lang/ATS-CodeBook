@@ -19,7 +19,10 @@ PATSLIB=$(PATSHOME)/ccomp/atslib
 
 ######
 
-all:: Hangman3_dats
+all:: \
+Hangman3_player0_dats
+all:: \
+Hangman3_player1_dats
 
 ######
 
@@ -28,8 +31,15 @@ testall:: all cleanall
 
 ######
 #
-Hangman3_dats: \
-Hangman3.dats; \
+Hangman3_player0_dats: \
+Hangman3_player0.dats; \
+$(PATSCC) -I./node_modules \
+  -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $< -latslib -ljson-c
+#
+######
+#
+Hangman3_player1_dats: \
+Hangman3_player1.dats; \
 $(PATSCC) -I./node_modules \
   -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $< -latslib -ljson-c
 #
@@ -40,9 +50,10 @@ clean:: ; rm -f *_?ats.o
 clean:: ; rm -f *_?ats.c
 
 cleanall:: clean
-cleanall:: ; rm -f Hangman3_dats
 cleanall:: ; rm -f node_modules -r
 cleanall:: ; rm -f package-lock.json
+cleanall:: ; rm -f Hangman3_player0_dats
+cleanall:: ; rm -f Hangman3_player1_dats
 
 ######
 
