@@ -39,14 +39,16 @@ argument to the game-loop (so as for it to be updated).
   
 ## [Hangman2](./Hangman2)
 
-This example implements a distributed version of the Hangman game,
-making use of a simple web service to handle I/O.
+This example implements a distributed version of the Hangman game for
+two players, where only the one who does the guessing part of the game
+can send messages to the other one through a web-based uni-directional
+channel.
   
 ## [Hangman3](./Hangman3)
 
 This example implements another distributed version of the Hangman
 game for two independent players, who communicate with each other
-through two untyped uni-directional channels.
+through two web-bsaed uni-directional channels (that are untyped).
   
 ## [WordFrqncyCount](./WordFrqncyCount)
 
