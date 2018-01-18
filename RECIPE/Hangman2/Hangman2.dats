@@ -179,16 +179,14 @@ cs: List0_vt(string)
 ) : List0_vt(string) =
 (
 case+ xs of
-| list_nil() =>
-  (list_vt_reverse(cs))
+| list_nil() => cs
 | list_cons(x0, xs) => let
     val-JSONstring(x0) = x0
     val i0 = $STDLIB.atoi(x0)
   in
     if
     i0 <= n0
-    then
-    list_vt_reverse(cs)
+    then (cs)
     else
     auxone2(n0, xs, list_vt_cons(x0, cs))
   end // end of [list_cons]

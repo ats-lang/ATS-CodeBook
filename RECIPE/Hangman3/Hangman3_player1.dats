@@ -291,8 +291,22 @@ GameLoop_guess
 else
 let
   val () = free(lns)
-  val () = free(lines)
-  val () = println! ("No more chances!") in (0)
+  val () =
+  println! ("No more chances!")
+  val () =
+  (
+    case+ !lines of
+    | ~stream_vt_nil
+        ((*void*)) => ()
+    | ~stream_vt_cons
+        (l0, lines) => let
+        val () = lazy_vt_free(lines)
+      in
+        println! ("The chosen word: ", l0)
+      end // end of [stream_vt_cons]
+  ) : void // end of [val]
+in
+  (0)
 end // end of [else]
 )
 //

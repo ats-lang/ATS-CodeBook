@@ -334,6 +334,7 @@ GameLoop_timeup
   state.ntime where
 {
   val () = free(xs)
+  val () = channel01_insert_msg(state.word0)
   val () = println! ("Sorry, you have no more chances.")
 }
 
