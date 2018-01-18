@@ -47,7 +47,7 @@ channel.
 ## [Hangman3](./Hangman3)
 
 This example implements another distributed version of the Hangman
-game for two communicating player, where the communication is done
+game for two communicating players, where the communication is done
 through two web-based uni-directional channels (that are untyped).
   
 ## [WordFrqncyCount](./WordFrqncyCount)

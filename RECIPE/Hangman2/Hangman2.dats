@@ -449,27 +449,29 @@ stream_vt_map<string><string>
 implement
 stream_vt_map$fopr<string><string>
   (line) =
-  trunc(string2ptr(line)) where
+  trunc(line) where
 {
 //
 fun
-trunc(p0: ptr): string = let
+trunc
+(line: string): string = let
 //
-val c0 = $UN.ptr0_get<char>(p0)
+val ofs =
+string_find_index<>(line, ':')
 //
 in
 //
 if
-iseqz(c0)
-then "" else
-(
-if
-(c0 != ':')
+isgtez(ofs)
 then
-trunc(ptr_succ<char>(p0))
-else
-$UN.cast{string}(ptr_succ<char>(p0))
+(
+$UN.cast
+{string}
+(
+ ptr_add<char>
+ (string2ptr(line), succ(ofs))
 )
+) else ("")
 //
 end // end of [trunc]
 } (* end of [stream_vt_map$fopr] *)

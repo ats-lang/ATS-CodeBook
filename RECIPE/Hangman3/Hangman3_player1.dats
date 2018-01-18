@@ -189,7 +189,8 @@ stream_vt_map<string><string>
 implement
 stream_vt_map$fopr<string><string>
   (line) =
-  trunc(string2ptr(line)) where
+  trunc
+  (string2ptr(line)) where
 {
 //
 fun
