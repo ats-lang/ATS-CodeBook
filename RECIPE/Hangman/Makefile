@@ -20,11 +20,10 @@ PATSLIB=$(PATSHOME)/ccomp/atslib
 ######
 
 all:: Hangman_dats
-regress:: Hangman_dats; ./$<
 
 ######
 
-testall:: all regress cleanall
+testall:: all cleanall
 
 ######
 
