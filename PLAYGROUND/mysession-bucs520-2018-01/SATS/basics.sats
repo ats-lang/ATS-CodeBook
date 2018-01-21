@@ -51,6 +51,22 @@ where prtclist = list0(prtcl)
 (* ****** ****** *)
 //
 fun
+print_ssdt
+{a:t0p}(ssdt(a)): void
+fun
+prerr_ssdt
+{a:t0p}(ssdt(a)): void
+fun
+fprint_ssdt :
+{a:t0p} fprint_type(ssdt(a))
+//
+overload print with print_ssdt
+overload prerr with prerr_ssdt
+overload fprint with fprint_ssdt
+//
+(* ****** ****** *)
+//
+fun
 print_prtcl(prtcl): void
 fun
 prerr_prtcl(prtcl): void
@@ -67,6 +83,11 @@ abstype
 channel_type(id:int) = ptr
 typedef
 channel(id:int) = channel_type(id)
+//
+(* ****** ****** *)
+//
+typedef
+channel() = [id:int] channel_type(id)
 //
 (* ****** ****** *)
 //
@@ -95,8 +116,7 @@ end // end of [local]
 
 (* ****** ****** *)
 
-fun
-{a:t0p}
+fun{}
 chanprot_elim_nil
 {id:int}
 (CH: channel(id), prot: protocol(id)): void

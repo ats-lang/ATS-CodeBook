@@ -93,12 +93,19 @@ myserver
 //
   val x4 =
   (
-    if x1*x2 = y3 then true else false
+  if x1*x2 = y3
+    then true else false
+  // end of [if]
   ) : bool // end of [val]
   val () =
   chanprot_bmsg_send<bool>(CH, prot, x4)
-in
+//
+  val () =
   chanprot_elim_nil(CH, prot)
+in
+  if x4
+  then println!("Correct!")
+  else println!("Incorrect!")
 end // end of [myserver]
 
 (* ****** ****** *)
@@ -121,16 +128,17 @@ myclient
     (CH, prot, x1 * x2)
 //
   val x4 =
-  chanprot_bmsg_recv<bool>
-    (CH, prot)
+  chanprot_bmsg_recv<bool>(CH, prot)
 //
   val () =
   chanprot_elim_nil(CH, prot)
 //
 in
+//
   if x4
   then println!("Correct!")
   else println!("Incorrect!")
+//
 end // end of [myclient]
 
 (* ****** ****** *)

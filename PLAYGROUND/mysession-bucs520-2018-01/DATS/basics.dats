@@ -26,13 +26,74 @@ UN = "prelude/SATS/unsafe.sats"
 
 (* ****** ****** *)
 //
-typedef
-role = int
+typedef role = int
 //
-typedef
-channel() =
-[id:int] channel(id)
+(* ****** ****** *)
 //
+implement
+print_ssdt(dt) =
+fprint_ssdt(stdout_ref, dt)
+implement
+prerr_ssdt(ssdt) =
+fprint_ssdt(stderr_ref, ssdt)
+//
+implement
+fprint_ssdt
+(out, ssdt0) =
+(
+case+ ssdt0 of
+//
+| SSDTint() =>
+  fprint(out, "SSDTint()")
+//
+| SSDTbool() =>
+  fprint(out, "SSDTbool()")
+//
+| SSDTdouble() =>
+  fprint(out, "SSDTdouble()")
+| SSDTstring() =>
+  fprint(out, "SSDTstring()")
+//
+| SSDTlist(ssdt1) =>
+  fprint!(out, "SSDTlist(", ssdt1, ")")
+//
+) (* end of [fprint_ssdt] *)
+//
+(* ****** ****** *)
+
+implement
+print_prtcl(prot) =
+fprint_prtcl(stdout_ref, prot)
+implement
+prerr_prtcl(prot) =
+fprint_prtcl(stderr_ref, prot)
+
+implement
+fprint_prtcl
+(out, prot0) =
+(
+case+ prot0 of
+//
+| PRTCLnil() =>
+  fprint(out, "PRTCLnil()")
+//
+| PRTCLbmsg(r, ssdt) =>
+  fprint!(out, "PRTCLbmsg(", r, ", ", ssdt, ")")
+//
+| PRTCLlazy(lprot) =>
+  fprint!(out, "PRTCLlazy(", "...", ")")
+//
+| PRTCLjoin(prots) =>
+  fprint!(out, "PRTCLjoin(", "...", ")")
+//
+| PRTCLaconj(r, prots) =>
+  fprint!(out, "PRTCLaconj(", r, ", ", "...", ")")
+| PRTCLmconj(r, prots) =>
+  fprint!(out, "PRTCLmconj(", r, ", ", "...", ")")
+)
+//
+// end of [ssprot]
+
 (* ****** ****** *)
 //
 extern
@@ -79,6 +140,40 @@ chanprot_bmsg_recv<int> = chanprot_bmsg_recv_int<>
 implement
 chanprot_bmsg_recv<bool> = chanprot_bmsg_recv_bool<>
 //
+(* ****** ****** *)
+
+local
+
+reassume protocol_vtype
+
+in (* in-of-local *)
+
+implement
+{}(*tmp*)
+chanprot_elim_nil
+(
+  CH, prot
+) = let
+  val P0 = prot
+in
+(
+case+ P0 of
+| PRTCLnil() => ()
+| ((*rest-of-PRTCL*)) =>
+  let
+    val () =
+    prerrln!
+    ("chanprot_elim_nil: prot = ", P0)
+  in
+    let val () =
+      assertloc(false) in ((*void*)) end
+    // end of [if]
+  end (* end of [let] *)
+)
+end // end of [channprot_elim_nil]
+
+end // end of [local]
+
 (* ****** ****** *)
 
 local
