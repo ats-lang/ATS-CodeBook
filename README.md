@@ -12,4 +12,5 @@ Please find various coding examples in this directory.
 
 ## [ATS-CodeBook/PLAYGROUND](./PLAYGROUND)
 
-This directory is mostly for playing with some programming ideas.
+This directory is mostly for playing with some programming ideas of
+interest.
