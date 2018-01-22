@@ -103,6 +103,13 @@ pprotocol(id:int) = pprotocol_vtype(id)
 //
 (* ****** ****** *)
 
+vtypedef
+protocol() = [id:int] protocol(id)
+vtypedef
+pprotocol() = [id:int] pprotocol(id)
+
+(* ****** ****** *)
+
 local
 
 assume

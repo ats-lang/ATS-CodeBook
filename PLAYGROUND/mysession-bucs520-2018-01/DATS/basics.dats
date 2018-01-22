@@ -68,6 +68,11 @@ implement
 prerr_prtcl(prot) =
 fprint_prtcl(stderr_ref, prot)
 
+(* ****** ****** *)
+
+implement
+fprint_val<prtcl> = fprint_prtcl
+
 implement
 fprint_prtcl
 (out, prot0) =
@@ -84,7 +89,7 @@ case+ prot0 of
   fprint!(out, "PRTCLlazy(", "...", ")")
 //
 | PRTCLjoin(prots) =>
-  fprint!(out, "PRTCLjoin(", "...", ")")
+  fprint!(out, "PRTCLjoin(", prots, ")")
 //
 | PRTCLaconj(r, prots) =>
   fprint!(out, "PRTCLaconj(", r, ", ", "...", ")")
@@ -105,15 +110,6 @@ fun{}
 chanrole_bmsg_send_int
   (CH: channel(), r: role, x: int): void
 //
-extern
-fun{}
-chanrole_bmsg_recv_bool
-  (CH: channel(), r: role): bool
-extern
-fun{}
-chanrole_bmsg_send_bool
-  (CH: channel(), r: role, x: bool): void
-//
 (* ****** ****** *)
 
 implement
@@ -133,13 +129,6 @@ in
   chanprot_bmsg_send_int<>(CH, r, x)
 end // end of [chanprot_bmsg_send_bool]
 
-(* ****** ****** *)
-//
-implement
-chanprot_bmsg_recv<int> = chanprot_bmsg_recv_int<>
-implement
-chanprot_bmsg_recv<bool> = chanprot_bmsg_recv_bool<>
-//
 (* ****** ****** *)
 
 local
@@ -170,7 +159,7 @@ case+ P0 of
     // end of [if]
   end (* end of [let] *)
 )
-end // end of [channprot_elim_nil]
+end // end of [chanprot_elim_nil]
 
 end // end of [local]
 
@@ -208,7 +197,7 @@ case+ P0 of
     // end of [if]
   end (* end of [let] *)
 )
-end // end of [channprot_bmsg_recv_int]
+end // end of [chanprot_bmsg_recv_int]
 
 (* ****** ****** *)
 
@@ -236,76 +225,22 @@ case+ P0 of
     let val () = assertloc(false) in ((*void*)) end
   end (* end of [let] *)
 )
-end // end of [channprot_bmsg_send_int]
+end // end of [chanprot_bmsg_send_int]
 
 end // end of [local]
 
 (* ****** ****** *)
-
-local
-
-reassume protocol_vtype
-
-in (* in-of-local *)
-
+//
 implement
-chanprot_bmsg_recv_bool<>
-(
-  CH, prot
-) = let
-  val P0 = prot
-in
-(
-case+ P0 of
-| PRTCLbmsg
-    (r, dt) => let
-    val-SSDTbool() = dt
-  in
-    chanrole_bmsg_recv_bool<>(CH, r)
-  end // end of [PRTCLbmsg]
-| ((*rest-of-PRTCL*)) =>
-  let
-    val () =
-    prerrln!
-    ("chanprot_bmsg_recv_bool: prot = ", P0)
-  in
-    let val () =
-      assertloc(false) in $UN.cast{bool}(0) end
-    // end of [let]
-  end (* end of [let] *)
-)
-end // end of [channprot_bmsg_recv_bool]
-
-(* ****** ****** *)
-
+chanprot_bmsg_recv<int> = chanprot_bmsg_recv_int<>
 implement
-chanprot_bmsg_send_bool<>
-(
-  CH, prot, x
-) = let
-  val P0 = prot
-in
-(
-case+ P0 of
-| PRTCLbmsg
-    (r, dt) => let
-    val-SSDTbool() = dt
-  in
-    chanrole_bmsg_send_bool<>(CH, r, x)
-  end // end of [PRTCLbmsg]
-| ((*rest-of-PRTCL*)) =>
-  let
-    val () =
-    prerrln!
-    ("chanprot_bmsg_send_bool: prot = ", P0)
-  in
-    let val () = assertloc(false) in ((*void*)) end
-  end (* end of [let] *)
-)
-end // end of [channprot_bmsg_send_bool]
-
-end // end of [local]
-
+chanprot_bmsg_send<int> = chanprot_bmsg_send_int<>
+//
+implement
+chanprot_bmsg_recv<bool> = chanprot_bmsg_recv_bool<>
+implement
+chanprot_bmsg_send<bool> = chanprot_bmsg_send_bool<>
+//
 (* ****** ****** *)
 
 (* end of [basics.dats] *)
