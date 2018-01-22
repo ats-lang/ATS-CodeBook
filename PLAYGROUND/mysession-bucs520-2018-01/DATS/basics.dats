@@ -73,6 +73,8 @@ fprint_prtcl(stderr_ref, prot)
 implement
 fprint_val<prtcl> = fprint_prtcl
 
+(* ****** ****** *)
+
 implement
 fprint_prtcl
 (out, prot0) =
@@ -100,6 +102,29 @@ case+ prot0 of
 // end of [ssprot]
 
 (* ****** ****** *)
+
+implement
+prtcl_join
+  (ps) =
+(
+case+ ps of
+| list0_nil() => PRTCLnil()
+| list0_cons _ => PRTCLjoin(ps)
+)
+
+implement
+prtcl_join_cons
+  (p0, ps) =
+(
+case+ p0 of
+| PRTCLnil() => prtcl_join(ps)
+| _(*non-PRTCLnil*) =>
+  (
+    PRTCLjoin(list0_cons(p0, ps))
+  )
+) (* prtcl_join_cons *)
+
+(* ****** ****** *)
 //
 extern
 fun{}
@@ -110,25 +135,6 @@ fun{}
 chanrole_bmsg_send_int
   (CH: channel(), r: role, x: int): void
 //
-(* ****** ****** *)
-
-implement
-chanprot_bmsg_recv_bool<>
-  (CH, r) = let
-  val x =
-  chanprot_bmsg_recv_int<>(CH, r)
-in
-  if x > 0 then true else false
-end // end of [chanprot_bmsg_recv_bool]
-
-implement
-chanprot_bmsg_send_bool<>
-  (CH, r, x) = let
-  val x = (if x then 1 else 0): int
-in
-  chanprot_bmsg_send_int<>(CH, r, x)
-end // end of [chanprot_bmsg_send_bool]
-
 (* ****** ****** *)
 
 local
@@ -183,9 +189,25 @@ case+ P0 of
 | PRTCLbmsg
     (r, dt) => let
     val-SSDTint() = dt
+    val ((*void*)) =
+      (prot := PRTCLnil())
   in
     chanrole_bmsg_recv_int<>(CH, r)
   end // end of [PRTCLbmsg]
+| PRTCLjoin(PS) =>
+    (x0) where
+  {
+    val-
+    list0_cons
+      (P1, PS) = PS
+    // end of [val]
+    val () =
+    prot := P1
+    val x0 =
+    chanprot_bmsg_recv_int<>(CH, prot)
+    val () =
+    (prot := prtcl_join_cons(prot, PS))
+  } (* end of [PRTCLjoin] *)
 | ((*rest-of-PRTCL*)) =>
   let
     val () =
@@ -213,9 +235,26 @@ case+ P0 of
 | PRTCLbmsg
     (r, dt) => let
     val-SSDTint() = dt
+    val ((*void*)) =
+      (prot := PRTCLnil())
+    // end of [val]
   in
     chanrole_bmsg_send_int<>(CH, r, x)
   end // end of [PRTCLbmsg]
+| PRTCLjoin(PS) =>
+  {
+    val-
+    list0_cons
+      (P1, PS) = PS
+    // end of [val]
+    val () =
+    prot := P1
+    val () =
+    chanprot_bmsg_send_int<>(CH, prot, x)
+    val () =
+      (prot := prtcl_join_cons(prot, PS))
+    // end of [val]
+  } (* end of [PRTCLjoin] *)
 | ((*rest-of-PRTCL*)) =>
   let
     val () =
@@ -235,11 +274,6 @@ implement
 chanprot_bmsg_recv<int> = chanprot_bmsg_recv_int<>
 implement
 chanprot_bmsg_send<int> = chanprot_bmsg_send_int<>
-//
-implement
-chanprot_bmsg_recv<bool> = chanprot_bmsg_recv_bool<>
-implement
-chanprot_bmsg_send<bool> = chanprot_bmsg_send_bool<>
 //
 (* ****** ****** *)
 

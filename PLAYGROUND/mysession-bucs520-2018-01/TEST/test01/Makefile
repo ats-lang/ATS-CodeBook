@@ -30,13 +30,13 @@ testall:: all cleanall
 ######
 #
 myserver_dats: \
-myprtcl.dats \
+mybasis.dats \
 myserver.dats; \
 $(PATSCC) -I./node_modules \
 -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $^ -latslib -ljson-c
 #
 myclient_dats: \
-myprtcl.dats \
+mybasis.dats \
 myclient.dats; \
 $(PATSCC) -I./node_modules \
 -D_GNU_SOURCE -DATS_MEMALLOC_LIBC -o $@ $^ -latslib -ljson-c

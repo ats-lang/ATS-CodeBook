@@ -55,7 +55,7 @@ myprtcl() = ssjoin
 (
 list0_tuple<prtcl>
 ( ssbmsg(0, int), ssbmsg(0, int)
-, ssbmsg(1, int), ssbmsg(0, bool)
+, ssbmsg(1, int), ssbmsg(0, int)
 )
 )
 
@@ -410,6 +410,48 @@ case+ xs of
 
 (* ****** ****** *)
 
+local
+
+fun
+auxproc
+(
+xs: stream_vt(string)
+) : stream_vt(string) =
+stream_vt_map<string><string>
+  (xs) where
+{
+//
+implement
+stream_vt_map$fopr<string><string>
+  (x) =
+  trunc(string2ptr(x)) where
+{
+//
+fun
+trunc(p0: ptr): string = let
+//
+val c0 = $UN.ptr0_get<char>(p0)
+//
+in
+//
+if
+iseqz(c0)
+then "" else
+(
+if
+(c0 != ':')
+then
+trunc(ptr_succ<char>(p0))
+else
+$UN.cast{string}(ptr_succ<char>(p0))
+)
+//
+end // end of [trunc]
+} (* end of [stream_vt_map$fopr] *)
+}
+
+in
+
 fun
 streamize_channel00
 (
@@ -436,7 +478,7 @@ in
 end // end of [chanraw_readall]
 //
 in
-  streamize_chanraw<>(CH0)
+  auxproc(streamize_chanraw<>(CH0))
 end // end of [streamize_channel00]
 
 (* ****** ****** *)
@@ -467,8 +509,10 @@ in
 end // end of [chanraw_readall]
 //
 in
-  streamize_chanraw<>(CH1)
+  auxproc(streamize_chanraw<>(CH1))
 end // end of [streamize_channel01]
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -664,4 +708,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [myprtcl.dats] *)
+(* end of [mybasis.dats] *)

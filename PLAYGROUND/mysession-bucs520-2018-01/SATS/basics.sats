@@ -79,6 +79,15 @@ overload fprint with fprint_prtcl
 //
 (* ****** ****** *)
 //
+fun
+prtcl_join
+  (ps: prtclist): prtcl
+and
+prtcl_join_cons
+  (p0: prtcl, ps: prtclist): prtcl
+//
+(* ****** ****** *)
+//
 abstype
 channel_type(id:int) = ptr
 typedef

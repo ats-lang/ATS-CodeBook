@@ -32,7 +32,7 @@ myclient
 //
 #staload UN = $UNSAFE
 //
-#staload "./myprtcl.dats"
+#staload "./mybasis.dats"
 //
 (* ****** ****** *)
 
@@ -53,15 +53,23 @@ myclient
   chanprot_bmsg_send<int>
     (CH, prot, x1 * x2)
 //
+  val () =
+  println! ("x1 = ", x1)
+  val () =
+  println! ("x2 = ", x2)
+//
   val x4 =
-  chanprot_bmsg_recv<bool>(CH, prot)
+  chanprot_bmsg_recv<int>(CH, prot)
+//
+  val () =
+  println! ("x4 = ", x4)
 //
   val () =
   chanprot_elim_nil(CH, prot)
 //
 in
 //
-if (x4)
+if (x4 > 0)
 then println!("Correct!") else println!("Incorrect!")
 //
 end // end of [let] // end of [myclient]
@@ -70,7 +78,7 @@ end // end of [let] // end of [myclient]
 
 local
 
-#dynload"./myprtcl.dats"
+#dynload"./mybasis.dats"
 
 #include
 "./../../DATS/basics.dats"
