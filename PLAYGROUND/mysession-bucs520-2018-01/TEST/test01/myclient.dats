@@ -29,7 +29,7 @@ myclient
 (CH: channel(id), prot: protocol(id)): void
 extern
 fun
-myclient_repopt
+myclient_optrep
 {id:int}
 (CH: channel(id), prot: protocol(id)): void
 
@@ -82,7 +82,7 @@ end // end of [let] // end of [myclient]
 (* ****** ****** *)
 
 implement
-myclient_repopt
+myclient_optrep
 (CH, prot) = let
 //
 var prot = prot
@@ -100,7 +100,7 @@ chanprot_conj_aneg<>(CH, prot)
 val
 ((*void*)) =
 println!
-("myclient_repopt: opt = ", opt)
+("myclient_optrep: opt = ", opt)
 *)
 //
 in
@@ -116,10 +116,10 @@ else let
   prtcl_join_uncons(prot)
   val () = myclient(CH, P0)
 in
-  myclient_repopt(CH, prot)
+  myclient_optrep(CH, prot)
 end // end of [else]
 //
-end // end of [myclient_repopt]
+end // end of [myclient_optrep]
 
 (* ****** ****** *)
 
@@ -138,7 +138,7 @@ main0() = () where
 //
 val
 prot =
-prtcl_repopt(0, myprtcl())
+prtcl_optrep(0, myprtcl())
 val
 [id:int]
 prot =
@@ -148,7 +148,7 @@ val CH =
 $UN.cast
 {channel(id)}(list0_tuple<int>(1))
 //
-val ((*void*)) = myclient_repopt(CH, prot)
+val ((*void*)) = myclient_optrep(CH, prot)
 //
 } (* end of [main0] *)
 

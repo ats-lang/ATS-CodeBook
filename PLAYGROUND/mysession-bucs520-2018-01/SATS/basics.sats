@@ -93,7 +93,7 @@ prtcl_option
   (r0: int, prot: prtcl): prtcl
 //
 fun
-prtcl_repopt
+prtcl_optrep
   (r0: int, prot: prtcl): prtcl
 //
 fun

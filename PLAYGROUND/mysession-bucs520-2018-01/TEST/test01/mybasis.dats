@@ -561,15 +561,17 @@ ref<ptr>(the_null_ptr)
 
 in
 
+(* ****** ****** *)
+//
 extern
 fun
 channel00_pop_msg
-  (): string
+((*void*)): string
 extern
 fun
 channel01_pop_msg
-  (): string
-
+((*void*)): string
+//
 (* ****** ****** *)
 
 implement

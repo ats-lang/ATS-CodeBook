@@ -29,7 +29,7 @@ myserver
 (CH: channel(id), prot: protocol(id)): void
 extern
 fun
-myserver_repopt
+myserver_optrep
 {id:int}
 ( CH: channel(id)
 , prot: protocol(id), lines: stream_vt(string)): void
@@ -98,7 +98,7 @@ end // end of [let] // end of [myserver]
 (* ****** ****** *)
 
 implement
-myserver_repopt
+myserver_optrep
 (CH, prot, lines) = let
 //
 var prot = prot
@@ -108,7 +108,7 @@ println! (">>test or quit?")
 (*
 val () =
 println!
-( "myserver_repopt: prot = "
+( "myserver_optrep: prot = "
 , $UN.castvwtp1{prtcl}(prot))
 *)
 //
@@ -146,10 +146,10 @@ case+ !lines of
         prtcl_join_uncons(prot)
         val () = myserver(CH, P0)
       in
-        myserver_repopt(CH, prot, lines)
+        myserver_optrep(CH, prot, lines)
       end // end of [non-quit]
   )
-end (* end of [myserver_repopt] *)
+end (* end of [myserver_optrep] *)
 
 (* ****** ****** *)
 
@@ -168,7 +168,7 @@ main0() = () where
 //
 val
 prot =
-prtcl_repopt(0, myprtcl())
+prtcl_optrep(0, myprtcl())
 val
 [id:int]
 prot =
@@ -182,7 +182,7 @@ $UN.cast
 {channel(id)}(list0_tuple<int>(0))
 //
 val ((*void*)) =
-myserver_repopt
+myserver_optrep
   (CH, prot, lines) where
 {
   val

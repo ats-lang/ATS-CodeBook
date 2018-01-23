@@ -143,7 +143,7 @@ PRTCLaconj
 ) (* prtcl_option *)
 
 implement
-prtcl_repopt
+prtcl_optrep
   (r0, p0) =
 (
 prtcl_option
@@ -152,7 +152,7 @@ prtcl_option
   (list0_tuple<prtcl>
    ( p0
    , PRTCLlazy
-     ($delay(prtcl_repopt(r0, p0))))))
+     ($delay(prtcl_optrep(r0, p0))))))
 )
 
 (* ****** ****** *)
