@@ -110,6 +110,7 @@ in
 //
 if
 (opt=0)
+then let
 val () =
 chanprot_elim_nil<>
   (CH, prot)
