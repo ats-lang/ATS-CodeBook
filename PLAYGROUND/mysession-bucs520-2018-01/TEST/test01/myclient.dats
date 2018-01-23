@@ -107,9 +107,13 @@ in
 //
 if
 (opt=0)
-then
+then let
+val () =
 chanprot_elim_nil<>
   (CH, prot)
+in
+  println!("It is over!")
+end // end of [then]
 else let
   val-
   ~Some_vt(P0) =
