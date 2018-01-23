@@ -59,9 +59,12 @@ myclient
   val () =
   println! ("x2 = ", x2)
 //
+  val y3 = x1 * x2
   val () =
   chanprot_bmsg_send<int>
-    (CH, prot, x1 * x2)
+    (CH, prot, y3)
+  val () =
+  println! ("y3 = ", y3)
 //
   val x4 =
   chanprot_bmsg_recv<int>(CH, prot)
@@ -107,9 +110,12 @@ in
 //
 if
 (opt=0)
-then
+val () =
 chanprot_elim_nil<>
   (CH, prot)
+in
+  println!("It is over!")
+end // end of [then]
 else let
   val-
   ~Some_vt(P0) =

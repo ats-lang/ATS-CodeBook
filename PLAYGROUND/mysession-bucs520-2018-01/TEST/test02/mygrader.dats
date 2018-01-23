@@ -117,9 +117,12 @@ in
 //
 if
 (opt=0)
-then
+val () =
 chanprot_elim_nil<>
   (CH, prot)
+in
+  println!("It is over!")
+end // end of [then]
 else let
   val-
   ~Some_vt(P0) =
@@ -154,13 +157,9 @@ val
 prot =
 $UN.castvwtp0{protocol()}(prot)
 //
-val () = channel00_clearall()
-val () = channel01_clearall()
-val () = channel02_clearall()
-//
 val CH =
 $UN.cast
-{channel(id)}(list0_tuple<int>(0))
+{channel(id)}(list0_tuple<int>(2))
 //
 val () = mygrader_optrep(CH, prot)
 //
