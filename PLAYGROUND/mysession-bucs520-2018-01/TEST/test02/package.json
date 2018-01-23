@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "atscntrb-libjson-c": "^1.0.3",
+    "atscntrb-hx-teaching-bucs": "^1.0.8"
+  }
+}
