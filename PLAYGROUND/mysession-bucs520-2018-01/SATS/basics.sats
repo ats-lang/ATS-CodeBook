@@ -88,6 +88,19 @@ prtcl_join_cons
 //
 (* ****** ****** *)
 //
+fun
+prtcl_option
+  (r0: int, prot: prtcl): prtcl
+//
+fun
+prtcl_repopt
+  (r0: int, prot: prtcl): prtcl
+//
+fun
+prtcl_repeat(prot: prtcl): prtcl
+//
+(* ****** ****** *)
+//
 abstype
 channel_type(id:int) = ptr
 typedef
@@ -130,6 +143,19 @@ in
   // nothing
 end // end of [local]
 
+(* ****** ****** *)
+//
+vtypedef
+protocolopt(id:int) =
+Option_vt(protocol(id))
+//
+(* ****** ****** *)
+//
+fun
+prtcl_join_uncons
+{id:int}
+(p0: &protocol(id) >> _): protocolopt(id)
+//
 (* ****** ****** *)
 
 fun{}
@@ -177,29 +203,25 @@ $d2ctype(chanprot_bmsg_send<bool>)
 
 (* ****** ****** *)
 
-fun
-{a:t0p}
+fun{}
 chanprot_conj_aneg
 {id:int}
-(CH: channel(id), prot: &protocol(id) >> _): void
+(CH: channel(id), prot: &protocol(id) >> _): int(*opt*)
 
-fun
-{a:t0p}
+fun{}
 chanprot_conj_apos
 {id:int}
 (CH: channel(id), prot: &protocol(id) >> _, opt: int): void
 
 (* ****** ****** *)
 
-fun
-{a:t0p}
+fun{}
 chanprot_conj_mpos
 {id:int}
 ( CH: channel(id)
 , prot: &protocol(id) >> _): list0_vt(protocol(id))
 
-fun
-{a:t0p}
+fun{}
 chanprot_conj_mneg
 {id:int}
 ( CH: channel(id)

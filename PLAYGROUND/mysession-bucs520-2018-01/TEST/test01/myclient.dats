@@ -27,6 +27,11 @@ fun
 myclient
 {id:int}
 (CH: channel(id), prot: protocol(id)): void
+extern
+fun
+myclient_repopt
+{id:int}
+(CH: channel(id), prot: protocol(id)): void
 
 (* ****** ****** *)
 //
@@ -50,13 +55,13 @@ myclient
     (CH, prot)
 //
   val () =
-  chanprot_bmsg_send<int>
-    (CH, prot, x1 * x2)
-//
-  val () =
   println! ("x1 = ", x1)
   val () =
   println! ("x2 = ", x2)
+//
+  val () =
+  chanprot_bmsg_send<int>
+    (CH, prot, x1 * x2)
 //
   val x4 =
   chanprot_bmsg_recv<int>(CH, prot)
@@ -76,6 +81,48 @@ end // end of [let] // end of [myclient]
 
 (* ****** ****** *)
 
+implement
+myclient_repopt
+(CH, prot) = let
+//
+var prot = prot
+//
+(*
+val () =
+println!
+( "prot = "
+, $UN.castvwtp1{prtcl}(prot))
+*)
+//
+val opt =
+chanprot_conj_aneg<>(CH, prot)
+(*
+val
+((*void*)) =
+println!
+("myclient_repopt: opt = ", opt)
+*)
+//
+in
+//
+if
+(opt=0)
+then
+chanprot_elim_nil<>
+  (CH, prot)
+else let
+  val-
+  ~Some_vt(P0) =
+  prtcl_join_uncons(prot)
+  val () = myclient(CH, P0)
+in
+  myclient_repopt(CH, prot)
+end // end of [else]
+//
+end // end of [myclient_repopt]
+
+(* ****** ****** *)
+
 local
 
 #dynload"./mybasis.dats"
@@ -90,7 +137,8 @@ main0() = () where
 {
 //
 val
-prot = myprtcl((*void*))
+prot =
+prtcl_repopt(0, myprtcl())
 val
 [id:int]
 prot =
@@ -100,7 +148,7 @@ val CH =
 $UN.cast
 {channel(id)}(list0_tuple<int>(1))
 //
-val ((*void*)) = myclient(CH, prot)
+val ((*void*)) = myclient_repopt(CH, prot)
 //
 } (* end of [main0] *)
 

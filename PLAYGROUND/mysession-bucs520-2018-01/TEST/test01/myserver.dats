@@ -27,6 +27,12 @@ fun
 myserver
 {id:int}
 (CH: channel(id), prot: protocol(id)): void
+extern
+fun
+myserver_repopt
+{id:int}
+( CH: channel(id)
+, prot: protocol(id), lines: stream_vt(string)): void
 
 (* ****** ****** *)
 
@@ -45,6 +51,13 @@ myserver
 (CH, prot) = let
 //
   var prot = prot
+//
+(*
+val () =
+println!
+( "myserver: prot = "
+, $UN.castvwtp1{prtcl}(prot))
+*)
 //
   val x1 = randint(N)
   val x2 = randint(N)
@@ -84,6 +97,62 @@ end // end of [let] // end of [myserver]
 
 (* ****** ****** *)
 
+implement
+myserver_repopt
+(CH, prot, lines) = let
+//
+var prot = prot
+//
+val () =
+println! (">>test or quit?")
+(*
+val () =
+println!
+( "myserver_repopt: prot = "
+, $UN.castvwtp1{prtcl}(prot))
+*)
+//
+in
+//
+case+ !lines of
+| ~stream_vt_nil() => let
+    val () =
+    chanprot_conj_apos<>
+      (CH, prot, 0(*exit*))
+  in
+    chanprot_elim_nil<>(CH, prot)
+  end // end of [stream_vt_nil]
+| ~stream_vt_cons
+   (line, lines) =>
+  (
+    case+ line of
+    | "quit" => let
+        val () =
+        lazy_vt_free(lines)
+        val () =
+        chanprot_conj_apos<>
+          (CH, prot, 0(*exit*))
+        // end of [val]
+      in
+        chanprot_elim_nil<>(CH, prot)
+      end // end of [quit]
+    | _(*non-quit*) => let
+        val () =
+        chanprot_conj_apos<>
+          (CH, prot, 1(*exit*))
+        // end of [val]
+        val-
+        ~Some_vt(P0) =
+        prtcl_join_uncons(prot)
+        val () = myserver(CH, P0)
+      in
+        myserver_repopt(CH, prot, lines)
+      end // end of [non-quit]
+  )
+end (* end of [myserver_repopt] *)
+
+(* ****** ****** *)
+
 local
 
 #dynload"./mybasis.dats"
@@ -98,7 +167,8 @@ main0() = () where
 {
 //
 val
-prot = myprtcl((*void*))
+prot =
+prtcl_repopt(0, myprtcl())
 val
 [id:int]
 prot =
@@ -111,7 +181,14 @@ val CH =
 $UN.cast
 {channel(id)}(list0_tuple<int>(0))
 //
-val ((*void*)) = myserver(CH, prot)
+val ((*void*)) =
+myserver_repopt
+  (CH, prot, lines) where
+{
+  val
+  lines =
+  streamize_fileref_line(stdin_ref)
+}
 //
 } (* end of [main0] *)
 
