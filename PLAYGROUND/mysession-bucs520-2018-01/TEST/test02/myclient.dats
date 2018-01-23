@@ -26,12 +26,15 @@ extern
 fun
 myclient
 {id:int}
-(CH: channel(id), prot: protocol(id)): void
+( CH: channel(id)
+, prot: protocol(id)
+, lines: stream_vt(string)): stream_vt(string)
 extern
 fun
 myclient_optrep
 {id:int}
-(CH: channel(id), prot: protocol(id)): void
+( CH: channel(id)
+, prot: protocol(id), lines: stream_vt(string)): void
 
 (* ****** ****** *)
 //
@@ -43,7 +46,7 @@ myclient_optrep
 
 implement
 myclient
-(CH, prot) = let
+(CH, prot, lines) = let
 //
   var prot = prot
 //
@@ -59,7 +62,15 @@ myclient
   val () =
   println! ("x2 = ", x2)
 //
-  val y3 = x1 * x2
+  val () =
+  println!
+  (">>Input your answer:")
+//
+  val-
+  ~stream_vt_cons
+   (line, lines) = !lines
+  val y3 =
+  g0string2int(line)
   val () =
   chanprot_bmsg_send<int>
     (CH, prot, y3)
@@ -77,8 +88,12 @@ myclient
 //
 in
 //
+lines where
+{
+val () =
 if (x4 > 0)
 then println!("Correct!") else println!("Incorrect!")
+}
 //
 end // end of [let] // end of [myclient]
 
@@ -86,7 +101,7 @@ end // end of [let] // end of [myclient]
 
 implement
 myclient_optrep
-(CH, prot) = let
+(CH, prot, lines) = let
 //
 var prot = prot
 //
@@ -115,15 +130,17 @@ val () =
 chanprot_elim_nil<>
   (CH, prot)
 in
+  free(lines);
   println!("It is over!")
 end // end of [then]
 else let
   val-
   ~Some_vt(P0) =
   prtcl_join_uncons(prot)
-  val () = myclient(CH, P0)
+  val lines =
+  myclient(CH, P0, lines)
 in
-  myclient_optrep(CH, prot)
+  myclient_optrep(CH, prot, lines)
 end // end of [else]
 //
 end // end of [myclient_optrep]
@@ -155,7 +172,14 @@ val CH =
 $UN.cast
 {channel(id)}(list0_tuple<int>(1))
 //
-val ((*void*)) = myclient_optrep(CH, prot)
+val ((*void*)) =
+myclient_optrep
+  (CH, prot, lines) where
+{
+  val
+  lines =
+  streamize_fileref_line(stdin_ref)
+}
 //
 } (* end of [main0] *)
 
