@@ -26,11 +26,9 @@ local
 
 (* ****** ****** *)
 
-#define int SSDTint
-#define bool SSDTbool
+#define ssint SSDTint
+#define ssbool SSDTbool
 #define sslist SSDTlist
-#define double SSDTdouble
-#define string SSDTstring
 
 (* ****** ****** *)
 
@@ -54,8 +52,8 @@ implement
 myprtcl() = ssjoin
 (
 list0_tuple<prtcl>
-( ssbmsg(0, int), ssbmsg(0, int)
-, ssbmsg(1, int), ssbmsg(0, int)
+( ssbmsg(0, ssint), ssbmsg(0, ssint)
+, ssbmsg(1, ssint), ssbmsg(0, ssint)
 )
 )
 
