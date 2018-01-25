@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "atscntrb-hx-intinf": "^1.0.4",
+    "atscntrb-hx-intinf": "^1.0.8",
     "atscntrb-hx-mytesting": "^1.0.1"
   }
 }

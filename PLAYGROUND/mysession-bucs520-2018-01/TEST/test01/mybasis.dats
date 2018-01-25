@@ -63,10 +63,10 @@ end // end of [local]
 //
 #include
 "$PATSHOMELOCS\
-/atscntrb-libjson-c/mylibies.hats"
+/atscntrb-hx-libjson-c/mylibies.hats"
 #include
 "$PATSHOMELOCS\
-/atscntrb-libjson-c/mylibies_link.hats"
+/atscntrb-hx-libjson-c/mylibies_link.hats"
 //
 #staload $JSON_ML
 //
