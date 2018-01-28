@@ -17,9 +17,9 @@
 (* ****** ****** *)
 
 datatype token =
-  | TOKint of string
-  | TOKide of string
-  | TOKchar of char
+  | TOKide of string // ide=alpha[alnum]*
+  | TOKint of string // int=digit[digit]*
+  | TOKchr of (char)  // special character
 
 (* ****** ****** *)
 
@@ -47,8 +47,8 @@ case+ tok of
   fprint!(out, "TOKint(", int, ")")
 | TOKide(ide) =>
   fprint!(out, "TOKide(", ide, ")")  
-| TOKchar(char) =>
-  fprint!(out, "TOKchar(", char, ")")  
+| TOKchr(chr) =>
+  fprint!(out, "TOKchr(", chr, ")")  
 )
 
 (* ****** ****** *)
@@ -74,8 +74,10 @@ stream_vt_con(token) =
 ifcase
 | isalpha(c0) =>
   aux1_ide(cs, list_vt_sing(c0))
+| isdigit(c0) =>
+  aux1_int(cs, list_vt_sing(c0))
 | _(* else *) =>
-  stream_vt_cons(TOKchar(c0), tokenize(cs))
+  stream_vt_cons(TOKchr(c0), tokenize(cs))
 )
 
 and
@@ -99,10 +101,8 @@ case+ !cs of
     (c0, cs) =>
   (
     ifcase
-    | isalpha(c0) =>
+    | isalnum(c0) =>
       aux1_ide(cs, list_vt_cons(c0, ds))
-    | isdigit(c0) =>
-      aux1_int(cs, list_vt_cons(c0, ds))
     | _(* else *) => let
         val ide =
         string_make_rlist_vt(ds)
@@ -133,7 +133,16 @@ case+ !cs of
     (c0, cs) =>
   (
     ifcase
-    | isalpha(c0) =>
+    | isalpha(c0) => let
+        val int =
+        string_make_rlist_vt(ds)
+      in
+        stream_vt_cons
+        ( TOKint(int)
+        , $ldelay(aux1_ide(cs, list_vt_sing(c0)), ~cs)
+        )
+      end // end of [isalpha]
+    | isdigit(c0) =>
       aux1_int(cs, list_vt_cons(c0, ds))
     | _(* else *) => let
         val int =
