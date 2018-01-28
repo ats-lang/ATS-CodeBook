@@ -52,6 +52,12 @@ This example implements another distributed version of the Hangman
 game for two communicating players, where the communication is done
 through two web-based uni-directional channels (that are untyped).
   
+## [Tokenizer](./Tokenizer)
+
+This example gives an implementation of a tokenizer that turns a
+linear stream of characters into a linear stream of tokens (for
+identifier names and (unsigned) integers.
+  
 ## [WordFrqncyCount](./WordFrqncyCount)
 
 This example gives a stream-based implementation that counts words in
