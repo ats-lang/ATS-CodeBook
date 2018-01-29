@@ -13,6 +13,7 @@ SUBDIRS += ./ReadFromSTDIN3
 SUBDIRS += ./Hangman
 SUBDIRS += ./Hangman2
 SUBDIRS += ./Hangman3
+SUBDIRS += ./Tokenizer
 SUBDIRS += ./WordFrqncyCount
 
 .PHONY: testall

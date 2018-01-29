@@ -19,7 +19,7 @@
 datatype token =
   | TOKide of string // ide=alpha[alnum]*
   | TOKint of string // int=digit[digit]*
-  | TOKchr of (char)  // special character
+  | TOKchr of (char) // special character
 
 (* ****** ****** *)
 
