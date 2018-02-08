@@ -15,7 +15,7 @@ PATSLIB=$(PATSHOME)/ccomp/atslib
 
 ######
 
-all:: Hello_dats
+all:: BinarySearch_dats
 
 ######
 
@@ -25,11 +25,11 @@ testall:: cleanall
 
 ######
 
-regress:: Hello_dats; ./$<
+regress:: BinarySearch_dats; ./$<
 
 ######
 
-%_dats: %.dats; $(PATSCC) -o $@ $<
+%_dats: %.dats; $(PATSCC) -DATS_MEMALLOC_LIBC -o $@ $<
 
 ######
 
@@ -38,6 +38,6 @@ clean:: ; rm -f *_?ats.o
 clean:: ; rm -f *_?ats.c
 
 cleanall:: clean
-cleanall:: ; rm -f Hello_dats
+cleanall:: ; rm -f BinarySearch_dats
 
 ###### end of [Makefile] ######

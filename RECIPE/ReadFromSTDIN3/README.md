@@ -54,15 +54,15 @@ case+ !xs of
 ```
 
 In the package *atscntrb-hx-teaching-bucs*, there is a function of the
-name `streamize_fileref_lineto` that turns the content of a given
-file handle into a linear stream of lineto-values. If reading from the
-file handle is blocked for more than `nwait` seconds, where
-`nwait` is the second argument of `streamize_fileref_lineto`,
-then `LNTOtimeout()` is added into the stream.  Otherwise,
-`LNTOtimeout(l0)` is added into the stream for some linear string
-`l0` representing the currently line read from the file handle.
-And the following function `streamize_fileref_line_` is just a
-specialized version of `streamize_fileref_lineto`:
+name `streamize_fileref_lineto` that turns the content of a given file
+handle into a linear stream of lineto-values. If reading from the file
+handle is blocked for more than `nwait` seconds, where `nwait` is the
+second argument of `streamize_fileref_lineto`, then `LNTOtimeout()` is
+added into the stream.  Otherwise, `LNTOline(l0)` is added into the
+stream for some linear string `l0` representing the currently line
+read from the file handle.  And the following function
+`streamize_fileref_line_` is just a specialized version of
+`streamize_fileref_lineto`:
   
 ```ats
 fun

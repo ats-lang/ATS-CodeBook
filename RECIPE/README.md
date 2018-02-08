@@ -12,6 +12,12 @@ it and then execute it.
 This example presents a simple method for using GMP in ATS.
 It also makes use of some timing functions for measuring performance.
 
+## [BinarySearch](./BinarySearch)
+
+The program in this example demonstrates a stream-based approach to
+locating a zero of a given continuous function in a given interval via
+the so-called binary search.
+
 ## [ReadFromSTDIN](./ReadFromSTDIN)
 
 This example demonstrates a stream-based approach to constructing an
