@@ -25,10 +25,11 @@ interval
 //
 fun
 BinarySearch
-( f: freal
-, a: double
-, b: double
-): stream(interval) = $delay
+(
+f : freal
+,
+a : double, b : double
+) : stream(interval) = $delay
 let
 //
   val m = (a+b) / 2
