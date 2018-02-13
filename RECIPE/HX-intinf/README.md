@@ -60,7 +60,8 @@ overload print with $GINTINF_t.print_intinf
 //
   val N = 1000
   val r3 =
-  my_time_spent<intinf>(lam()=>gfact3<a>(N))
+  my_time_spent<intinf>
+  (lam()=>gfact3<intinf>(N))
   val () = println! ("gfact3(", N, ") = ", r3)
 //
 ```
