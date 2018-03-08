@@ -27,4 +27,14 @@ of gvhasbtbl-values, which is essentially a hashtable of gvalues
 Please find in *NDX100.dats* some code that parses the historic data
 for NDX100 (NASDAQ 100).
 
+If you have [tcc](https://bellard.org/tcc/) installed, you can simply
+issue the following command-line:
+
+```shell
+bash NDX100.dats
+```
+
+to compile and then execute the code in *NDX100.dats*, effectively using
+ATS as a scripting language!
+
 Happy programming in ATS!!!
