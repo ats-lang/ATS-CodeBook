@@ -9,7 +9,7 @@ tcc - -run -DATS_MEMALLOC_LIBC -I${PATSHOME} -I${PATSHOME}/ccomp/runtime -L${PAT
 //
 (* ****** ****** *)
 
-#include "./myutil.dats"
+#include "./myread.dats"
 
 (* ****** ****** *)
 //
