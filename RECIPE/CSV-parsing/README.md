@@ -1,4 +1,4 @@
-# CSV Parsing
+# Parsing for the CSV format
 
 This example presents a way to parse a table in the
 CSV format.
@@ -31,7 +31,7 @@ If you have [tcc](https://bellard.org/tcc/) installed, you can simply
 issue the following command-line:
 
 ```shell
-bash NDX100.dats
+bash ./NDX100.dats
 ```
 
 to compile and then execute the code in *NDX100.dats*, effectively using

@@ -64,6 +64,12 @@ This example gives an implementation of a tokenizer that turns a
 linear stream of characters into a linear stream of tokens (for
 identifier names and (unsigned) integers.
   
+## [CSV-parsing](./CSV-parsing)
+
+This example presents a way to parse a table in the
+CSV format such that each line in the table is converted into
+a hashtable (of gvalues declared in *libats/ML/SATS/gvalue.sats*).
+  
 ## [WordFrqncyCount](./WordFrqncyCount)
 
 This example gives a stream-based implementation that counts words in
