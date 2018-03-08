@@ -60,6 +60,7 @@ npm-install:: ; $(NPM) install
 ######
 
 export \
-PATSHOMELOCS=./node_modules:./../node_modules:./../../node_modules
+PATSHOMELOCS = \
+./node_modules:./../node_modules:./../../node_modules:./../../../node_modules
 
 ###### end of [Makefile] ######

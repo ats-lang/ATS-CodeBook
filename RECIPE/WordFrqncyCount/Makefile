@@ -50,4 +50,10 @@ cleanall:: ; rm -f WordFrqncyCount_dats
 npm-update:: ; $(NPM) update
 npm-install:: ; $(NPM) install
 
+######
+
+export \
+PATSHOMELOCS = \
+./node_modules:./../node_modules:./../../node_modules:./../../../node_modules
+
 ###### end of [Makefile] ######
