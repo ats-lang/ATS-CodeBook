@@ -296,12 +296,12 @@ println!
 (* ****** ****** *)
 //
 val
-NDX100_table_dataseg =
+NDX100_table_dateseg =
 f_NDX100_table_dateseg("2010-01-01", "2018-01-01")
 //
 val () =
 println!
-("|NDX100_table_dataseg| = ", length(NDX100_table_dataseg))
+("|NDX100_table_dateseg| = ", length(NDX100_table_dateseg))
 //
 (* ****** ****** *)
 
