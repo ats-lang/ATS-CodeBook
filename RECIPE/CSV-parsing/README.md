@@ -21,7 +21,7 @@ Date,Open,High,Low,Close,Adj Close,Volume
 where the first row contains the name of each column. The function
 `dframe_read_fileref` in the file *myread.dats* parses such a table
 (contained in the file referred to by a given file handle) into a list
-of gvhasbtbl-values, which is essentially a hashtable of gvalues
+of gvhasbtbl-values, each of which is essentially a hashtable of gvalues
 (declared in the file *$PATSHOME/libats/ML/SATS/gvalue.sats*).
 
 Please find in *NDX100.dats* some code that parses the historic data

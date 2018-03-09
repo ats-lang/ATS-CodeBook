@@ -74,11 +74,9 @@ NDX100_table
  end
 )
 //
-(*
 val () =
 println!
 ("|NDX100_Date| = ", length(NDX100_Date))
-*)
 //
 (* ****** ****** *)
 
@@ -252,19 +250,21 @@ macdef uns = GVstring_uncons
 val start =
 array0_bsearch<gvhashtbl>
 ( NDX100_table
-, lam(x) => strcmp(uns(x["Date"]), start))
+, lam(x) => strcmp(start, uns(x["Date"])))
 val finish =
 array0_bsearch<gvhashtbl>
 ( NDX100_table
-, lam(x) => strcmp(uns(x["Date"]), finish))
+, lam(x) => strcmp(finish, uns(x["Date"])))
+//
+val start = min(start, finish)
+val finish = max(start, finish)
 //
 in
-  array0_make_subarray(NDX100_table, start, finish)
+  array0_make_subarray(NDX100_table, start, finish-start)
 end // end of [f_NDX100_table_dateseg]
 //
 (* ****** ****** *)
 
-(*
 val
 NDX100_20100101 =
 array0_bsearch<string>
@@ -274,9 +274,6 @@ array0_bsearch<string>
 {
   val date = "2010-01-01"
 }
-*)
-
-(*
 val
 NDX100_20180101 =
 array0_bsearch<string>
@@ -286,8 +283,16 @@ array0_bsearch<string>
 {
   val date = "2018-01-01"
 }
+//
+(*
+val () =
+println!
+("NDX100_20100101 = ", NDX100_20100101)
+val () =
+println!
+("NDX100_20180101 = ", NDX100_20180101)
 *)
-
+//
 (* ****** ****** *)
 //
 val
