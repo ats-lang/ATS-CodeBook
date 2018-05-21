@@ -41,11 +41,8 @@ length(NDX100_table)
 //
 val () =
 println!("|NDX100_table| = ", nday)
-//
-(*
 val () =
-println!("|NDX100_table[0]| = ", NDX100_table[0])
-*)
+println!("NDX100_table[0] = ", NDX100_table[0])
 //
 (* ****** ****** *)
 

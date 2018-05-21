@@ -1,10 +1,10 @@
 # Read from STDIN (2)
 
-If you have not yet read [ReadFromSTDIN](./ReadFromSTDIN), please
+If you have not yet read [ReadFromSTDIN](./../ReadFromSTDIN), please
 do so first.
 
 The code in this example does essentially the same as the
-code in [ReadFromSTDIN](./ReadFromSTDIN), but it is written in a
+code in [ReadFromSTDIN](./../ReadFromSTDIN), but it is written in a
 different style, which greatly stresses the use of combinators in
 functional programming.
 
