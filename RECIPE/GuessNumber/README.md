@@ -37,7 +37,9 @@ val () =
 end // end of [stateUpdate]
 ```
 
-Note that the code in this example for handling input does essentially
+Note that this is a memory-clean implementation in the sense
+that every allocated byte is freed before the program exits.
+The code in this example for handling input does essentially
 the same as the code in [ReadFromSTDIN](./../ReadFromSTDIN).
   
 Happy programming in ATS!!!
