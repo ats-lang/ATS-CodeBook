@@ -19,6 +19,12 @@ is freed *before* the program exits.
 //
 (* ****** ****** *)
 
+(*
+//
+[resp] is like enum:
+No memory allocation happens
+//
+*)
 datatype
 resp =
 Lower | Higher | Okay | Error

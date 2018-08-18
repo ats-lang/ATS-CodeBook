@@ -37,7 +37,7 @@ val () =
 end // end of [stateUpdate]
 ```
 
-Note that The code in this example for handling input does essentially
+Note that the code in this example for handling input does essentially
 the same as the code in [ReadFromSTDIN](./../ReadFromSTDIN).
   
 Happy programming in ATS!!!
