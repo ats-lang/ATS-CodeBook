@@ -1,7 +1,9 @@
 (* ****** ****** *)
 
-#include "share/atspre_staload.hats"
-#include "share/atspre_staload_libats_ML.hats"
+#include
+"share/atspre_staload.hats"
+#include
+"share/atspre_staload_libats_ML.hats"
 
 (* ****** ****** *)
 
@@ -59,8 +61,8 @@ end // end of [tally]
 implement
 main0() = () where
 {
-  val res = tally()
-  val () = println!("The tally of the input integers equals ", res)
+  val S0 = tally()
+  val () = println!("The tally of the input integers equals ", S0)
 }
 
 (* ****** ****** *)

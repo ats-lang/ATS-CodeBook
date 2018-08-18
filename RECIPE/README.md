@@ -38,6 +38,13 @@ This example does essentially the same as the code in
 (SIGALRM) to prevent the possible scenario of waiting indefinitely for
 the user's input.
 
+## [GuessNumber](./GuessNumber)
+
+This example implements a very simple game of guessing a number chosen
+from the range btween 0 and 100. During each round, the computer
+prints out its guess and the player gives a response whether the guess
+is less than, greater than or equal to the chosen number.
+
 ## [Hangman](./Hangman)
 
 This example gives a straightforward implementation of Hangman, a
