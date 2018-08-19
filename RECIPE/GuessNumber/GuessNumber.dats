@@ -7,7 +7,7 @@ a number in a given range.
 The computer tries to guess
 a number chosen by the player.
 //
-This implementation is in memory-clean
+This implementation is memory-clean
 in the sense that every allocated byte
 is freed *before* the program exits.
 //
