@@ -8,7 +8,7 @@ containing the number chosen by the player).
 
 The input from the player is first modeled
 as a linear stream (of linear strings) and
-then converted of a linear stream of responses
+then converted to a linear stream of responses
 (where each response is essentially an integer).
 
 The following function updates the state of the
