@@ -159,10 +159,13 @@ implement
 tokenize(cs) = $ldelay
 (
 case+ !cs of
-| ~stream_vt_nil() =>
-   stream_vt_nil()
-| ~stream_vt_cons(c0, cs) => aux1(c0, cs)
-, lazy_vt_free(cs)
+|
+~stream_vt_nil() =>
+ stream_vt_nil()
+|
+~stream_vt_cons(c0, cs) => aux1(c0, cs)
+,
+let val () = lazy_vt_free(cs) in (*freed*) end
 )
 
 end // end of [local]
